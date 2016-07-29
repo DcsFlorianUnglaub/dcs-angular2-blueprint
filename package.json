@@ -1,0 +1,67 @@
+{
+  "name": "dcs-angular2-blueprint",
+  "version": "1.0.0",
+  "description": "Starting point for angular2 projects at DCS.",
+  "main": "index.js",
+  "scripts": {
+    "watch:dev": "webpack-dev-server --config config/webpack.dev.js --progress --profile --colors --watch --display-error-details --display-cached --content-base src/ --inline --hot",
+    "build:dev": "webpack --config config/webpack.dev.js --progress --profile --colors --display-error-details --display-cached"
+  },
+  "config": {
+    "save-exact": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DcsMarcRemolt/dcs-angular2-blueprint.git"
+  },
+  "keywords": [
+    "angular2",
+    "blueprint",
+    "rxjs",
+    "webpack"
+  ],
+  "author": "Marc Remolt <marc.remolt@dcs-fuerth.de> (http://www.dcs-fuerth.de)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DcsMarcRemolt/dcs-angular2-blueprint/issues"
+  },
+  "homepage": "https://github.com/DcsMarcRemolt/dcs-angular2-blueprint#readme",
+  "devDependencies": {
+    "@types/core-js": "0.9.28",
+    "@types/node": "4.0.30",
+    "@types/webpack": "1.12.30",
+    "angular2-hmr": "0.8.1",
+    "angular2-template-loader": "0.4.0",
+    "awesome-typescript-loader": "2.1.1",
+    "codelyzer": "0.0.26",
+    "copy-webpack-plugin": "3.0.1",
+    "css-loader": "0.23.1",
+    "html-webpack-plugin": "2.22.0",
+    "json-loader": "0.5.4",
+    "raw-loader": "0.5.1",
+    "source-map-loader": "0.1.5",
+    "to-string-loader": "1.1.4",
+    "ts-helpers": "1.1.1",
+    "tslint": "3.14.0",
+    "typedoc": "0.4.4",
+    "typescript": "2.0.0",
+    "webpack": "1.13.1",
+    "webpack-dev-server": "1.14.1",
+    "webpack-merge": "0.14.1"
+  },
+  "dependencies": {
+    "@angular/common": "2.0.0-rc.4",
+    "@angular/compiler": "2.0.0-rc.4",
+    "@angular/core": "2.0.0-rc.4",
+    "@angular/forms": "0.2.0",
+    "@angular/http": "2.0.0-rc.4",
+    "@angular/platform-browser": "2.0.0-rc.4",
+    "@angular/platform-browser-dynamic": "2.0.0-rc.4",
+    "@angular/platform-server": "2.0.0-rc.4",
+    "@angular/router": "3.0.0-beta.2",
+    "core-js": "2.4.1",
+    "rxjs": "5.0.0-beta.10",
+    "ts-helpers": "1.1.1",
+    "zone.js": "0.6.12"
+  }
+}
