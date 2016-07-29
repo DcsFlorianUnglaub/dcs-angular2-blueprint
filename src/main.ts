@@ -1,13 +1,13 @@
 import { bootstrap } from '@angular/platform-browser-dynamic';
 import { enableProdMode } from '@angular/core';
+import { NgRedux } from 'ng2-redux';
 
 import { AppComponent } from './app/App.component';
-
-const app: AppComponent = new AppComponent();
 
 export function main(initialHmrState?: any): Promise<any> {
 
   return bootstrap(AppComponent, [
+    NgRedux
   ])
   .catch(err => console.error(err));
 }
