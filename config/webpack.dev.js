@@ -9,7 +9,8 @@ const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 
 module.exports = webpackMerge(commonConfig, {
   debug: true,
-  devtool: 'cheap-module-source-map',
+  // devtool: 'cheap-module-source-map',
+  devtool: 'cheap-module-eval-source-map',
 
   output: {
     path: buildPath,

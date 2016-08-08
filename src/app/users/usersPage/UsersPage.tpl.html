@@ -1,0 +1,31 @@
+<h1>Users</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Username</th>
+    <th>E-Mail</th>
+    <th>Phone</th>
+  </tr>
+
+  <tr *ngFor="let user of users$ | async; trackBy: identify">
+    <td>{{ user.get('name') }}</td>
+    <td>{{ user.get('username') }}</td>
+    <td>{{ user.get('email') }}</td>
+    <td>{{ user.get('phone') }}</td>
+  </tr>
+
+  <tr *ngIf="(users$ | async).size === 0">
+    <td colspan="4">No users available</td>
+  </tr>
+</table>
+
+<div *ngIf="loading$ | async">Users loading ...</div>
+
+<div *ngIf="error$ | async">
+  <h2>An API error occurred:</h2>
+  <pre>
+    {{ error$ | async | json }}
+  </pre>
+</div>
+
