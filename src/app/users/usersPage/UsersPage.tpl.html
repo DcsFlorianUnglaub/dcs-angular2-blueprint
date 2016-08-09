@@ -1,28 +1,9 @@
-<h1>List Users</h1>
-
-<table class="table table-bordered table-striped table-hover">
-  <tr>
-    <th>Name</th>
-    <th>Username</th>
-    <th>E-Mail</th>
-    <th>Phone</th>
-    <th>&nbsp;</th>
-  </tr>
-
-  <tr *ngFor="let user of users$ | async; trackBy: identify">
-    <td><a routerLink="/users/{{ user.get('id') }}">{{ user.get('name') }}</a></td>
-    <td>{{ user.get('username') }}</td>
-    <td>{{ user.get('email') }}</td>
-    <td>{{ user.get('phone') }}</td>
-    <td><a (click)="deleteUser(user)">delete</a></td>
-  </tr>
-
-  <tr *ngIf="(users$ | async).size === 0">
-    <td colspan="4">No users available</td>
-  </tr>
-</table>
-
-<div *ngIf="loading$ | async">Users loading ...</div>
+<dcs-users-grid
+  [users]="users$ | async"
+  [loading]="loading$ | async"
+  (deleteUser)="deleteUser($event)"
+  >
+</dcs-users-grid>
 
 <div *ngIf="error$ | async">
   <h2>An API error occurred:</h2>

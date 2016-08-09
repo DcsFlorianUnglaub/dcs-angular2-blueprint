@@ -1,5 +1,5 @@
+import { UsersGridComponent } from '../usersGrid/UsersGrid.component';
 import { Component } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { NgRedux, select } from 'ng2-redux';
 import { Map } from 'immutable';
@@ -11,7 +11,7 @@ import { UsersActions } from '../../backend/users/Users.actions';
   selector: 'dcs-users-page',
   templateUrl: './UsersPage.tpl.html',
   providers: [UsersActions],
-  directives: [ROUTER_DIRECTIVES]
+  directives: [UsersGridComponent]
 })
 export class UsersPageComponent extends ContainerComponent implements OnInit {
 
