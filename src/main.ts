@@ -1,7 +1,8 @@
 import { bootstrap } from '@angular/platform-browser-dynamic';
 import { enableProdMode } from '@angular/core';
-import { NgRedux } from 'ng2-redux';
 import { HTTP_PROVIDERS } from '@angular/http';
+import { disableDeprecatedForms, provideForms } from '@angular/forms';
+import { NgRedux } from 'ng2-redux';
 
 import { AppComponent } from './app/App.component';
 import { appRouterProviders } from './app/App.routes';
@@ -9,6 +10,8 @@ import { appRouterProviders } from './app/App.routes';
 export function main(initialHmrState?: any): Promise<any> {
 
   return bootstrap(AppComponent, [
+    disableDeprecatedForms(),
+    provideForms(),
     NgRedux,
     HTTP_PROVIDERS,
     appRouterProviders

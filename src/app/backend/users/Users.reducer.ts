@@ -1,4 +1,4 @@
-import { USERS_FETCH_START, USERS_FETCH_NEXT, USERS_FETCH_ERROR } from './Users.actions';
+import { USERS_FETCH_START, USERS_FETCH_NEXT, USERS_FETCH_ERROR, USER_SAVE_NEXT, USER_DELETE_NEXT } from './Users.actions';
 import { fromJS } from 'immutable';
 
 import { IState, IAction } from '../../base/interfaces';
@@ -34,6 +34,21 @@ export const usersReducer = (state: IState = initialState, action: IAction): ISt
           .set('loading', false)
           .set('entities', fromJS([]))
           .set('error', action.payload);
+      });
+
+    case USER_SAVE_NEXT:
+      return state.update('entities', entities => {
+        return entities.map(entity => {
+          if (entity.get('id') === action.payload.id) {
+            return fromJS(action.payload);
+          }
+          return entity;
+        });
+      });
+
+    case USER_DELETE_NEXT:
+      return state.update('entities', entities => {
+        return entities.filterNot(entity => entity.equals(action.payload));
       });
   }
 

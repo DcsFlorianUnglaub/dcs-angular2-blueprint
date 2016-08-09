@@ -1,0 +1,45 @@
+<div *ngIf="!(loading$ | async)">
+  <h1>User {{ currentUser.get('name') }}</h1>
+
+  <form class="form-horizontal" [formGroup]="userForm">
+
+    <div class="form-group" [ngClass]="{ 'has-error': hasError('name') }">
+      <label for="inpuFullName" class="col-sm-2 control-label">Name</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="inputFullName" placeholder="Name" formControlName="name">
+      </div>
+    </div>
+
+    <div class="form-group" [ngClass]="{ 'has-error': hasError('username') }">
+      <label for="inpuUserName" class="col-sm-2 control-label">Username</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="inputUserName" placeholder="Username" formControlName="username">
+      </div>
+    </div>
+
+    <div class="form-group" [ngClass]="{ 'has-error': hasError('email') }">
+      <label for="inputEmail" class="col-sm-2 control-label">E-Mail</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control" id="inputEmail" placeholder="Email" formControlName="email">
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" [disabled]="!userForm.valid" class="btn btn-default" (click)="saveUser()">Save</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div *ngIf="loading$ | async">loading ...</div>
+
+<div *ngIf="error$ | async">
+  <h2 class="error">An API error occurred:</h2>
+  <pre>
+    {{ error$ | async | json }}
+  </pre>
+</div>
+
+<a routerLink="/users">back</a>

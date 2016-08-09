@@ -2,6 +2,9 @@ const webpackMerge = require('webpack-merge');
 const commonConfig = require('./webpack.common.js');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 
+const autoprefixer = require('autoprefixer');
+const pixrem = require('pixrem');
+
 const helpers = require('./helpers');
 const buildPath = helpers.root('build', 'development');
 const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
@@ -26,6 +29,13 @@ module.exports = webpackMerge(commonConfig, {
       'ENV': JSON.stringify(ENV)
     })
   ],
+
+  postcss: function () {
+    return [
+      autoprefixer({ browsers: 'last 2 versions, ie > 11, safari >= 9' }),
+      pixrem
+    ];
+  },
 
   devServer: {
     port: 3000,

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { NgRedux, select } from 'ng2-redux';
 import { Map } from 'immutable';
@@ -9,7 +10,8 @@ import { UsersActions } from '../../backend/users/Users.actions';
 @Component({
   selector: 'dcs-users-page',
   templateUrl: './UsersPage.tpl.html',
-  providers: [UsersActions]
+  providers: [UsersActions],
+  directives: [ROUTER_DIRECTIVES]
 })
 export class UsersPageComponent extends ContainerComponent implements OnInit {
 
@@ -34,6 +36,10 @@ export class UsersPageComponent extends ContainerComponent implements OnInit {
 
   identify(index: number, item: Map<string, any>): number {
     return item.hashCode();
+  }
+
+  deleteUser(user: any) {
+    this.store.dispatch(this.usersActions.delete(user));
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 import { Response } from '@angular/http';
@@ -45,11 +45,13 @@ const loggerMiddleware: any = createLogger({
   }
 });
 
-
 @Component({
   selector: 'dcs-app',
   templateUrl: './App.tpl.html',
-  styleUrls: ['./App.css'],
+  styles: [
+    require('./App.scss').toString()
+  ],
+  encapsulation: ViewEncapsulation.None,
   providers: [DevToolsExtension, RestClient],
   directives: [ROUTER_DIRECTIVES]
 })

@@ -34,12 +34,28 @@ export class RestClient {
     return this.request(path, requestOptions.merge(options));
   }
 
+  put(path: string, body: any, options: any = {}): Observable<any> {
+    let requestOptions = new RequestOptions({
+      method: RequestMethod.Put,
+      body: body
+    });
+
+    return this.request(path, requestOptions.merge(options));
+  }
+
+  delete(path: string, options: any = {}): Observable<any> {
+    let requestOptions = new RequestOptions({
+      method: RequestMethod.Delete
+    });
+
+    return this.request(path, requestOptions.merge(options));
+  }
 
   protected request(path: string, requestOptions: RequestOptions): Observable<any> {
     let url: string = `${this.settings.apiUrl}/${path}`;
     return this.http
       .request(url, requestOptions)
-      .delay(1000)
+      .delay(300)
       .map(extractResponseData);
   }
 

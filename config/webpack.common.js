@@ -55,8 +55,21 @@ module.exports = {
         test: /\.html$/,
         loader: 'raw-loader',
         exclude: [helpers.root('src/index.html')]
-      }
+      },
 
+      {
+        test: /\.scss$/,
+        loaders: [
+          'css',
+          'postcss',
+          'sass'
+        ]
+      },
+
+      {
+        test: /\.(png|woff|woff2|eot|ttf|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loaders: ['file-loader']
+      }
     ]
   },
 
