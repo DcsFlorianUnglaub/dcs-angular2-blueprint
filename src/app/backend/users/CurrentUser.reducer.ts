@@ -10,7 +10,7 @@ const initialState: IState = fromJS({
   error: null
 });
 
-export const userReducer = (state: IState = initialState, action: IAction): IState => {
+export const currentUserReducer = (state: IState = initialState, action: IAction): IState => {
   switch (action.type) {
     case USER_FETCH_START:
       return state.merge(fromJS({

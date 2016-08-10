@@ -12,12 +12,12 @@ import { UserFormComponent } from '../userForm/UserForm.component';
 
 
 @Component({
-  selector: 'dcs-user-page',
-  templateUrl: './UserPage.tpl.html',
+  selector: 'dcs-current-user-page',
+  templateUrl: './CurrentUserPage.tpl.html',
   providers: [UsersActions],
   directives: [UserFormComponent]
 })
-export class UserPageComponent extends ContainerComponent implements OnInit {
+export class CurrentUserPageComponent extends ContainerComponent implements OnInit {
 
   @select(['currentUser', 'entity']) currentUser$: Observable<any>;
   @select(['currentUser', 'loading']) loading$: Observable<any>;
