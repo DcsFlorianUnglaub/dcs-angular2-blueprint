@@ -9,7 +9,6 @@ const helpers = require('./helpers');
 const buildPath = helpers.root('build', 'development');
 const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 
-
 module.exports = webpackMerge(commonConfig, {
   debug: true,
   // devtool: 'cheap-module-source-map',

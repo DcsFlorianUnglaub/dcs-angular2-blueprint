@@ -78,7 +78,7 @@ module.exports = {
     new webpack.optimize.OccurenceOrderPlugin(true),
 
     new webpack.optimize.CommonsChunkPlugin({
-      name: ['polyfills', 'vendor'].reverse()
+      name: ['polyfills', 'vendor', 'main'].reverse()
     }),
 
     new CopyWebpackPlugin([{

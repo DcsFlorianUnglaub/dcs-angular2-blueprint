@@ -69,14 +69,14 @@ export class AppComponent implements OnInit {
   }
 
   protected setupStore(): void {
-    let middleware: Array<any> = [];
+    let middleware: Array<any> = [observableMiddleware];
     let enhancers: Array<any> = [];
     let initialState: any = {};
 
     if (ENV === 'development') {
       initialState = HmrStore.getState().appState || {};
 
-      middleware = [...middleware, observableMiddleware, loggerMiddleware];
+      middleware = [...middleware, loggerMiddleware];
 
       if (this.devTools.isEnabled()) {
         // disconnect previous devtools instance, no history walking in dev tools otherwise
