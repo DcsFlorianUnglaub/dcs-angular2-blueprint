@@ -24,7 +24,7 @@ export class UserFormComponent extends PresentationalComponent implements OnChan
 
     this.userForm = this.formBuilder.group({
       name: ['', Validators.required],
-      username: ['', [Validators.required, Validators.minLength(6)]],
+      username: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]],
       email: ['', [Validators.required, Validators.pattern('.+@.+')]]
     });
   }

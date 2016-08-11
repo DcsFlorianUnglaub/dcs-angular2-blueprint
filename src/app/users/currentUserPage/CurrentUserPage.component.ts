@@ -20,7 +20,7 @@ import { UserFormComponent } from '../userForm/UserForm.component';
 export class CurrentUserPageComponent extends ContainerComponent implements OnInit {
 
   @select(['currentUser', 'entity']) currentUser$: Observable<any>;
-  @select(['currentUser', 'loading']) loading$: Observable<any>;
+  @select(['currentUser', 'loading']) loading$: Observable<boolean>;
   @select(['currentUser', 'error']) error$: Observable<any>;
 
   currentUser: Map<string, any> = Map<string, any>();

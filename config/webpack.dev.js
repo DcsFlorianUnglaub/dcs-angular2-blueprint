@@ -32,7 +32,7 @@ module.exports = webpackMerge(commonConfig, {
 
   postcss: function () {
     return [
-      autoprefixer({ browsers: 'last 2 versions, ie > 11, safari >= 9' }),
+      autoprefixer({ browsers: 'last 2 versions, ie > 10, safari >= 9' }),
       pixrem
     ];
   },
