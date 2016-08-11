@@ -14,7 +14,8 @@
     "paths": {},
     "types": [
       "node",
-      "webpack"
+      "webpack",
+      "jasmine"
     ]
   },
   "exclude": [

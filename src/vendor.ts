@@ -16,6 +16,7 @@ import 'rxjs/add/operator/mergeMap';
 // class operators
 import 'rxjs/add/observable/interval';
 import 'rxjs/add/observable/merge';
+import 'rxjs/add/observable/of';
 
 if ('production' === ENV) {
   // Production

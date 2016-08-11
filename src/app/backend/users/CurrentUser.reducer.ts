@@ -4,7 +4,7 @@ import { fromJS } from 'immutable';
 import { IState, IAction } from '../../base/interfaces';
 
 
-const initialState: IState = fromJS({
+export const initialState: IState = fromJS({
   entity: null,
   loading: false,
   error: null

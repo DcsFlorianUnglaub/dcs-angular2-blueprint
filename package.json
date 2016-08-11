@@ -4,11 +4,24 @@
   "description": "Starting point for angular2 projects at DCS.",
   "main": "index.js",
   "scripts": {
-    "build:dev": "webpack            --config config/webpack.dev.js  --progress --profile --colors --display-error-details --display-cached",
-    "build:prod": "webpack           --config config/webpack.prod.js --progress --profile --colors --display-error-details --display-cached --bail",
-    "watch:dev": "webpack-dev-server --config config/webpack.dev.js  --progress --profile --colors --display-error-details --display-cached --watch --inline --content-base src/",
+    "build:dev": "npm run clean && webpack            --config config/webpack.dev.js  --progress --profile --colors --display-error-details --display-cached",
+    "build:prod": "npm run clean && webpack            --config config/webpack.prod.js --progress --profile --colors --display-error-details --display-cached --bail",
+    "serve:prod": "live-server --entry-file=/ build/production",
+
+    "watch:dev": "npm run clean && webpack-dev-server --config config/webpack.dev.js  --progress --profile --colors --display-error-details --display-cached --watch --inline --content-base src/",
     "watch:dev:hmr": "npm run watch:dev -- --hot",
-    "backend:mock": "json-server mock/db.json --port 3001"
+
+    "test": "karma start",
+    "test:watch": "karma start --singleRun=false --autoWatch=true",
+    "posttest": "npm run coverage",
+    "coverage": "npm run coverage:remap && npm run coverage:report",
+    "coverage:remap": "remap-istanbul -i coverage/coverage.json -o coverage/coverage.json -t json -e node_modules,tests,karma.entry.ts",
+    "coverage:report": "istanbul report",
+
+    "lint": "tslint 'src/**/*.ts'",
+    "docs": "typedoc --out docs src/app",
+    "backend:mock": "json-server mock/db.json --port 3001",
+    "clean": "rimraf ./build"
   },
   "config": {
     "save-exact": true
@@ -31,6 +44,7 @@
   "homepage": "https://github.com/DcsMarcRemolt/dcs-angular2-blueprint#readme",
   "devDependencies": {
     "@types/core-js": "0.9.29",
+    "@types/jasmine": "^2.2.31",
     "@types/node": "6.0.32",
     "@types/redux-logger": "^2.6.29",
     "@types/webpack": "1.12.31",
@@ -45,12 +59,26 @@
     "cssnano": "^3.7.3",
     "file-loader": "^0.9.0",
     "html-webpack-plugin": "2.22.0",
+    "istanbul": "^0.4.4",
+    "istanbul-instrumenter-loader": "^0.2.0",
+    "jasmine-core": "^2.4.1",
     "json-loader": "0.5.4",
     "json-server": "^0.8.17",
+    "karma": "^1.1.2",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-coverage": "^1.1.1",
+    "karma-jasmine": "^1.0.2",
+    "karma-mocha-reporter": "^2.1.0",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "^1.8.0",
+    "live-server": "^1.0.0",
     "node-sass": "^3.8.0",
     "pixrem": "^3.0.1",
     "postcss-loader": "^0.9.1",
     "raw-loader": "0.5.1",
+    "redux-mock-store": "^1.1.2",
+    "remap-istanbul": "^0.6.4",
+    "rimraf": "^2.5.4",
     "sass-loader": "^4.0.0",
     "source-map-loader": "0.1.5",
     "to-string-loader": "1.1.4",
