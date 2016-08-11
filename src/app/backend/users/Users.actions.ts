@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-
 import { RestClient } from '../../base/restClient';
 
 
@@ -25,8 +24,7 @@ export const USER_DELETE_ERROR: string = 'USER_DELETE_ERROR';
 @Injectable()
 export class UsersActions {
 
-  constructor(private restClient: RestClient) {
-  }
+  constructor(private restClient: RestClient) {}
 
   fetch(): any {
     return {

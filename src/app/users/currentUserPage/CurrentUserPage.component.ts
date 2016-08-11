@@ -8,14 +8,11 @@ import { Map } from 'immutable';
 
 import { ContainerComponent } from '../../base/component/ContainerComponent';
 import { UsersActions } from '../../backend/users/Users.actions';
-import { UserFormComponent } from '../userForm/UserForm.component';
 
 
 @Component({
   selector: 'dcs-current-user-page',
-  templateUrl: './CurrentUserPage.tpl.html',
-  providers: [UsersActions],
-  directives: [UserFormComponent]
+  templateUrl: './CurrentUserPage.tpl.html'
 })
 export class CurrentUserPageComponent extends ContainerComponent implements OnInit {
 

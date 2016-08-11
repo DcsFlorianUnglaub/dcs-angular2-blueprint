@@ -1,9 +1,9 @@
-<dcs-users-grid
+<dcs-users-list
   [users]="users$ | async"
   [loading]="loading$ | async"
   (deleteUser)="deleteUser($event)"
   >
-</dcs-users-grid>
+</dcs-users-list>
 
 <div *ngIf="error$ | async">
   <h2>An API error occurred:</h2>

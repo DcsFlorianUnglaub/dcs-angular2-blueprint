@@ -2,7 +2,7 @@ import { CurrentUserPageComponent } from './users/currentUserPage/CurrentUserPag
 import { UsersPageComponent } from './users/usersPage/UsersPage.component';
 import { provideRouter, RouterConfig } from '@angular/router';
 
-const routes: RouterConfig = [
+export const routes: RouterConfig = [
   { path: 'users', component: UsersPageComponent },
   { path: 'users/:id', component: CurrentUserPageComponent },
 

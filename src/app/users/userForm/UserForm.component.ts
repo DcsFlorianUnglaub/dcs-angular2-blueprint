@@ -1,15 +1,13 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
-import { ROUTER_DIRECTIVES } from '@angular/router';
-import { REACTIVE_FORM_DIRECTIVES, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { fromJS } from 'immutable';
 
 import { PresentationalComponent } from '../../base/component/PresentationalComponent';
 
+
 @Component({
   selector: 'dcs-user-form',
-  templateUrl: './UserForm.tpl.html',
-  directives: [ROUTER_DIRECTIVES, REACTIVE_FORM_DIRECTIVES]
+  templateUrl: './UserForm.tpl.html'
 })
 export class UserFormComponent extends PresentationalComponent implements OnChanges {
 
