@@ -2,8 +2,7 @@
   <div class="col-sm-12">
 
     <dcs-user-form
-      [currentUser]="currentUser$ | async"
-      [loading]="loading$ | async"
+      [currentUser]="currentUser"
       [saving]="saving$ | async"
       (triggerSave)="saveUser($event)"
     ></dcs-user-form>

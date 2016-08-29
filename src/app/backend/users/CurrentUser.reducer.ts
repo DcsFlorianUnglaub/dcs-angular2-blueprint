@@ -2,7 +2,8 @@ import { fromJS } from 'immutable';
 
 import { IState, IAction, IReducer } from '../../base/interfaces';
 import { createReducer } from '../../utils/reducer';
-import { USER_FETCH_START, USER_FETCH_NEXT, USER_FETCH_ERROR, USER_SAVE_NEXT, USER_SAVE_ERROR } from './Users.actions';
+import { USER_FETCH_START, USER_FETCH_NEXT, USER_FETCH_ERROR,
+  USER_SAVE_START, USER_SAVE_NEXT, USER_SAVE_ERROR } from './Users.actions';
 
 
 export const currentUserInitialState: IState = fromJS({
@@ -16,7 +17,8 @@ export const currentUserReducer: IReducer = createReducer(currentUserInitialStat
     return state.merge(fromJS({
       loading: true,
       entity: null,
-      error: null
+      error: null,
+      saving: false
     }));
   },
 
@@ -36,16 +38,25 @@ export const currentUserReducer: IReducer = createReducer(currentUserInitialStat
     }));
   },
 
+  [USER_SAVE_START](state: IState, action: IAction): IState {
+    return state.merge(fromJS({
+      saving: true
+    }));
+  },
+
   [USER_SAVE_NEXT](state: IState, action: IAction): IState {
     return state.merge(fromJS({
       entity: fromJS(action.payload),
-      error: null
+      error: null,
+      saving: false
     }));
   },
 
   [USER_SAVE_ERROR](state: IState, action: IAction): IState {
-    return state
-      .set('error', action.payload);
+    return state.merge(fromJS({
+      error: action.payload,
+      saving: false
+    }));
   }
 
 });

@@ -13,6 +13,7 @@ export const USER_FETCH_NEXT: string = 'USER_FETCH_NEXT';
 export const USER_FETCH_ERROR: string = 'USER_FETCH_ERROR';
 
 export const USER_SAVE: string = 'USER_SAVE';
+export const USER_SAVE_START: string = 'USER_SAVE_START';
 export const USER_SAVE_NEXT: string = 'USER_SAVE_NEXT';
 export const USER_SAVE_ERROR: string = 'USER_SAVE_ERROR';
 
@@ -24,7 +25,7 @@ export const USER_DELETE_ERROR: string = 'USER_DELETE_ERROR';
 @Injectable()
 export class UsersActions {
 
-  constructor(private restClient: RestClient) {}
+  constructor(private restClient: RestClient) { }
 
   fetch(): any {
     return {
@@ -41,16 +42,24 @@ export class UsersActions {
   }
 
   save(user: any) {
-    return {
-      type: USER_SAVE,
-      payload:  this.restClient.put(`users/${user.get('id')}`, user.toJS())
-    };
+    if (user.get('id')) {
+      return {
+        type: USER_SAVE,
+        payload: this.restClient.put(`users/${user.get('id')}`, user.toJS())
+      };
+    } else {
+      return {
+        type: USER_SAVE,
+        payload: this.restClient.post(`users`, user.toJS())
+      };
+    }
+
   }
 
   delete(user: any) {
     return {
       type: USER_DELETE,
-      payload:  this.restClient
+      payload: this.restClient
         .delete(`users/${user.get('id')}`)
         .map(() => user)
     };

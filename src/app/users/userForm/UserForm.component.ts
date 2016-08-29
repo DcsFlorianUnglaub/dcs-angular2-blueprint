@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { fromJS } from 'immutable';
 
+import { validateEmail, validatePhone, validateFQDN } from '../../utils/validators';
 import { PresentationalComponent } from '../../base/component/PresentationalComponent';
 
 
@@ -13,6 +14,7 @@ export class UserFormComponent extends PresentationalComponent implements OnChan
 
   @Input() currentUser;
   @Input() loading;
+  @Input() saving;
   @Output() triggerSave = new EventEmitter();
 
   userForm: FormGroup;
@@ -21,18 +23,25 @@ export class UserFormComponent extends PresentationalComponent implements OnChan
     super();
 
     this.userForm = this.formBuilder.group({
-      name: ['', Validators.required],
+      name: ['', [Validators.required]],
       username: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]],
-      email: ['', [Validators.required, Validators.pattern('.+@.+')]]
-    });
-  }
+      email: ['', [Validators.required, validateEmail]],
+      phone: ['', [validatePhone]],
+      website: ['', [validateFQDN]],
 
-  hasError(fieldName: string, errorName?: string): boolean {
-    if (errorName) {
-      return !!(this.userForm.controls[fieldName].errors && this.userForm.controls[fieldName].errors[errorName]);
-    } else {
-      return !!this.userForm.controls[fieldName].errors;
-    }
+      address: this.formBuilder.group({
+        street: ['', [Validators.required]],
+        suite: [''],
+        city: ['', [Validators.required]],
+        zipcode: ['', [Validators.required]]
+      }),
+
+      company: this.formBuilder.group({
+        name: ['', [Validators.required]],
+        catchPhrase: ['', [Validators.required]],
+        bs: ['']
+      })
+    });
   }
 
   ngOnChanges(changes) {

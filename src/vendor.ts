@@ -14,6 +14,7 @@ import 'rxjs/add/operator/delay';
 import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/operator/takeUntil';
 // class operators
 import 'rxjs/add/observable/interval';
 import 'rxjs/add/observable/merge';

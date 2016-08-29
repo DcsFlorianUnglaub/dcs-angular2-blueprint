@@ -11,6 +11,7 @@ import { UsersPageComponent } from './users/usersPage/UsersPage.component';
 import { CurrentUserPageComponent } from './users/currentUserPage/CurrentUserPage.component';
 import { UserFormComponent } from './users/userForm/UserForm.component';
 import { UsersListComponent } from './users/usersList/UsersList.component';
+import { NewUserPageComponent } from './users/newUserPage/NewUserPage.component';
 
 import { RestClient } from './base/restClient';
 import { UsersActions } from './backend/users/Users.actions';
@@ -21,7 +22,8 @@ import { UsersActions } from './backend/users/Users.actions';
     UsersPageComponent,
     CurrentUserPageComponent,
     UsersListComponent,
-    UserFormComponent
+    UserFormComponent,
+    NewUserPageComponent
   ],
   imports: [
     BrowserModule,

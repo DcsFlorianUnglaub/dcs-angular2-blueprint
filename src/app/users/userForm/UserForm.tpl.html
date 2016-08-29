@@ -3,39 +3,133 @@
 
   <form class="form-horizontal" [formGroup]="userForm">
 
-    <div class="form-group" [ngClass]="{ 'has-error': hasError('name') }">
-      <label for="inpuFullName" class="col-sm-2 control-label">Name</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" id="inputFullName" placeholder="Name" formControlName="name">
-        <span class="help-block" *ngIf="hasError('name')">Required!</span>
-      </div>
-    </div>
+    <fieldset>
 
-    <div class="form-group" [ngClass]="{ 'has-error': hasError('username') }">
-      <label for="inpuUserName" class="col-sm-2 control-label">Username</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" id="inputUserName" placeholder="Username" formControlName="username">
+      <legend>User</legend>
 
-        <span class="help-block" *ngIf="hasError('username', 'required')">Required!</span>
-        <span class="help-block" *ngIf="hasError('username', 'minlength')">
-          The username must be at least {{ userForm.controls.username.errors.minlength.requiredLength }} characters long.
-        </span>
-        <span class="help-block" *ngIf="hasError('username', 'maxlength')">
-          The username must be at most {{ userForm.controls.username.errors.maxlength.requiredLength }} characters long.
-        </span>
-      </div>
-    </div>
 
-    <div class="form-group" [ngClass]="{ 'has-error': hasError('email') }">
-      <label for="inputEmail" class="col-sm-2 control-label">E-Mail</label>
-      <div class="col-sm-10">
-        <input type="email" class="form-control" id="inputEmail" placeholder="Email" formControlName="email">
+      <div class="form-group" [ngClass]="{ 'has-error': hasError(userForm, 'name') }">
+        <label for="inpuFullName" class="col-sm-2 control-label">Name</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="inputFullName" placeholder="Name" formControlName="name">
+          <span class="help-block" *ngIf="hasError(userForm, 'name')">Required!</span>
+        </div>
       </div>
-    </div>
+
+      <div class="form-group" [ngClass]="{ 'has-error': hasError(userForm, 'username') }">
+        <label for="inpuUserName" class="col-sm-2 control-label">Username</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="inputUserName" placeholder="Username" formControlName="username">
+
+          <span class="help-block" *ngIf="hasError(userForm, 'username', 'required')">Required!</span>
+          <span class="help-block" *ngIf="hasError(userForm, 'username', 'minlength')">
+            The username must be at least {{ userForm.controls.username.errors.minlength.requiredLength }} characters long.
+          </span>
+          <span class="help-block" *ngIf="hasError(userForm, 'username', 'maxlength')">
+            The username must be at most {{ userForm.controls.username.errors.maxlength.requiredLength }} characters long.
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group" [ngClass]="{ 'has-error': hasError(userForm, 'email') }">
+        <label for="inputEmail" class="col-sm-2 control-label">E-Mail</label>
+        <div class="col-sm-10">
+          <input type="email" class="form-control" id="inputEmail" placeholder="Email" formControlName="email">
+        </div>
+      </div>
+
+      <div class="form-group" [ngClass]="{ 'has-error': hasError(userForm, 'phone') }">
+        <label for="inputPhone" class="col-sm-2 control-label">Phone</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="inputPhone" placeholder="Phone" formControlName="phone">
+
+          <span class="help-block" *ngIf="hasError(userForm, 'phone', 'validatePhone')">
+            This is no valid phone number.
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group" [ngClass]="{ 'has-error': hasError(userForm, 'website') }">
+        <label for="inputWebsite" class="col-sm-2 control-label">Website</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="inputWebsite" placeholder="Website" formControlName="website">
+
+          <span class="help-block" *ngIf="hasError(userForm, 'website', 'validateFQDN')">
+            This is no valid website domain.
+          </span>
+        </div>
+      </div>
+
+    </fieldset>
+
+
+    <fieldset formGroupName="address">
+
+      <legend>Address</legend>
+
+      <div class="form-group" [ngClass]="{ 'has-error': hasError(userForm.controls.address, 'street') }">
+        <label for="inputStreet" class="col-sm-2 control-label">Street</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="inputStreet" placeholder="Street" formControlName="street">
+        </div>
+      </div>
+
+      <div class="form-group" [ngClass]="{ 'has-error': hasError(userForm.controls.address, 'suite') }">
+        <label for="inputSuite" class="col-sm-2 control-label">Suite</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="inputSuite" placeholder="Suite" formControlName="suite">
+        </div>
+      </div>
+
+      <div class="form-group" [ngClass]="{ 'has-error': hasError(userForm.controls.address, 'zipcode') }">
+        <label for="inputZipcode" class="col-sm-2 control-label">Zip code</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="inputZipcode" placeholder="Zip code" formControlName="zipcode">
+        </div>
+      </div>
+
+      <div class="form-group" [ngClass]="{ 'has-error': hasError(userForm.controls.address, 'city') }">
+        <label for="inputCity" class="col-sm-2 control-label">City</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="inputCity" placeholder="City" formControlName="city">
+        </div>
+      </div>
+
+    </fieldset>
+
+    <fieldset formGroupName="company">
+
+      <legend>Company</legend>
+
+      <div class="form-group" [ngClass]="{ 'has-error': hasError(userForm.controls.company, 'name') }">
+        <label for="inputCompanyName" class="col-sm-2 control-label">Name</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="inputCompanyName" placeholder="Name" formControlName="name">
+        </div>
+      </div>
+
+      <div class="form-group" [ngClass]="{ 'has-error': hasError(userForm.controls.company, 'catchPhrase') }">
+        <label for="inputCatchphrase" class="col-sm-2 control-label">Name</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="inputCatchphrase" placeholder="Catchphrase" formControlName="catchPhrase">
+        </div>
+      </div>
+
+      <div class="form-group" [ngClass]="{ 'has-error': hasError(userForm.controls.company, 'bs') }">
+        <label for="inputBs" class="col-sm-2 control-label">BS</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="inputBs" placeholder="BS" formControlName="bs">
+        </div>
+      </div>
+
+    </fieldset>
 
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" [disabled]="!userForm.valid" class="btn btn-default" (click)="saveUser()">Save</button>
+        <button type="submit" [disabled]="(!userForm.valid) || saving" class="btn btn-default" (click)="saveUser()">
+          <span *ngIf="!saving">Save</span>
+          <span *ngIf="saving">Saving ...</span>
+        </button>
       </div>
     </div>
   </form>
