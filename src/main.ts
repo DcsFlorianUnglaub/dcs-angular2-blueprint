@@ -12,6 +12,8 @@ import { loggerMiddleware, observableMiddleware } from './app/base/middleware';
 import { rootReducer } from './app/backend/Root.reducer';
 
 
+console.time('bootstrap');
+
 @NgModule({
   bootstrap: [
     AppComponent

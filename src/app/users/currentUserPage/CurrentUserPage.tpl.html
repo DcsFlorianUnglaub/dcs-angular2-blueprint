@@ -1,12 +1,18 @@
-<dcs-user-form
-  [currentUser]="currentUser$ | async"
-  [loading]="loading$ | async"
-  (triggerSave)="saveUser($event)"
-></dcs-user-form>
+<div class="row">
+  <div class="col-sm-12">
 
-<div *ngIf="error$ | async">
-  <h2 class="error">An API error occurred:</h2>
-  <pre>
-    {{ error$ | async | json }}
-  </pre>
+    <dcs-user-form
+      [currentUser]="currentUser$ | async"
+      [loading]="loading$ | async"
+      (triggerSave)="saveUser($event)"
+    ></dcs-user-form>
+
+    <div *ngIf="error$ | async">
+      <h2 class="error">An API error occurred:</h2>
+      <pre>
+        {{ error$ | async | json }}
+      </pre>
+    </div>
+
+  </div>
 </div>

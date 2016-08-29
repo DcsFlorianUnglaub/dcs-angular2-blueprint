@@ -1,4 +1,5 @@
 const webpackMerge = require('webpack-merge');
+const webpack = require('webpack');
 const commonConfig = require('./webpack.common.js');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 
@@ -26,7 +27,8 @@ module.exports = webpackMerge(commonConfig, {
   plugins: [
     new DefinePlugin({
       'ENV': JSON.stringify(ENV)
-    })
+    }),
+    new webpack.NamedModulesPlugin()
   ],
 
   postcss: function () {

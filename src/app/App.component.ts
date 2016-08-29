@@ -12,6 +12,7 @@ import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 export class AppComponent implements OnInit {
 
   ngOnInit(): void {
+    console.timeEnd('bootstrap');
     console.log('App init successful!!!');
     // window['app'] = this;
   }

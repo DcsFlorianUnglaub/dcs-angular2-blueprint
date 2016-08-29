@@ -27,8 +27,12 @@ export class UserFormComponent extends PresentationalComponent implements OnChan
     });
   }
 
-  hasError(fieldName: string): boolean {
-    return !!this.userForm.controls[fieldName].errors;
+  hasError(fieldName: string, errorName?: string): boolean {
+    if (errorName) {
+      return !!(this.userForm.controls[fieldName].errors && this.userForm.controls[fieldName].errors[errorName]);
+    } else {
+      return !!this.userForm.controls[fieldName].errors;
+    }
   }
 
   ngOnChanges(changes) {
