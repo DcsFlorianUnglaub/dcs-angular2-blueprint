@@ -37,18 +37,24 @@ module.exports = {
     loaders: [
       {
         test: /\.ts$/,
-        loaders: ['awesome-typescript-loader', 'angular2-template-loader'],
-        exclude: [/\.(spec|e2e)\.ts$/]
+        loaders: [
+          'awesome-typescript',
+          'angular2-template',
+          '@angularclass/hmr-loader'
+          ],
+        exclude: [
+          /\.(spec|e2e)\.ts$/
+        ]
       },
 
       {
         test: /\.json$/,
-        loader: 'json-loader'
+        loader: 'json'
       },
 
       {
         test: /\.css$/,
-        loaders: ['to-string-loader', 'css-loader']
+        loaders: ['to-string', 'css']
       },
 
       {
@@ -68,7 +74,7 @@ module.exports = {
 
       {
         test: /\.(png|woff|woff2|eot|ttf|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loaders: ['file-loader']
+        loaders: ['file']
       }
     ]
   },

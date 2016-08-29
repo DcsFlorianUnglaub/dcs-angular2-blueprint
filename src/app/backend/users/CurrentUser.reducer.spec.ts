@@ -1,6 +1,6 @@
 import { Map } from 'immutable';
 import { IState } from '../../base/interfaces';
-import { currentUserReducer, initialState } from './CurrentUser.reducer';
+import { currentUserReducer, currentUserInitialState } from './CurrentUser.reducer';
 
 describe('CurrentUser.reducer', () => {
 
@@ -12,7 +12,7 @@ describe('CurrentUser.reducer', () => {
       subject = currentUserReducer(undefined, { type: 'no real action' });
 
       expect(Map.isMap(subject)).toBeTruthy();
-      expect(initialState.equals(subject)).toBeTruthy();
+      expect(currentUserInitialState.equals(subject)).toBeTruthy();
     });
 
   });
@@ -20,7 +20,7 @@ describe('CurrentUser.reducer', () => {
   describe('USER_FETCH_START', () => {
 
     it('sets loading to true', () => {
-      subject = currentUserReducer(initialState, { type: 'USER_FETCH_START' });
+      subject = currentUserReducer(currentUserInitialState, { type: 'USER_FETCH_START' });
       expect(subject.get('loading')).toEqual(true);
     });
 
@@ -29,7 +29,7 @@ describe('CurrentUser.reducer', () => {
   describe('USER_FETCH_NEXT', () => {
 
     beforeEach(() => {
-      let loadingState: IState = currentUserReducer(initialState, { type: 'USER_FETCH_START' });
+      let loadingState: IState = currentUserReducer(currentUserInitialState, { type: 'USER_FETCH_START' });
       subject = currentUserReducer(loadingState, { type: 'USER_FETCH_NEXT', payload: { name: 'Testuser' } });
     });
 

@@ -1,7 +1,8 @@
 import { Observable } from 'rxjs/Observable';
 import { Response } from '@angular/http';
 import * as createLogger from 'redux-logger';
-import { Iterable } from 'immutable';
+
+import { IState } from './interfaces';
 
 
 export const observableMiddleware: any = store => next => action => {
@@ -23,17 +24,5 @@ export const observableMiddleware: any = store => next => action => {
 };
 
 export const loggerMiddleware: any = createLogger({
-  stateTransformer: (state) => {
-    let newState = {};
-
-    for (let i of Object.keys(state)) {
-      if (Iterable.isIterable(state[i])) {
-        newState[i] = state[i].toJS();
-      } else {
-        newState[i] = state[i];
-      }
-    };
-
-    return newState;
-  }
+  stateTransformer: (state: IState) => state.toJS()
 });

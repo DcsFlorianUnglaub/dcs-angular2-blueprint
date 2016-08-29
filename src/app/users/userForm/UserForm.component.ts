@@ -33,16 +33,13 @@ export class UserFormComponent extends PresentationalComponent implements OnChan
 
   ngOnChanges(changes) {
     if (this.currentUser) {
-      ['name', 'username', 'email'].forEach(fieldName => {
-        this.userForm.controls[fieldName]['updateValue'](this.currentUser.get(fieldName));
-      });
+      this.userForm.patchValue(this.currentUser.toJS());
     }
   }
 
   saveUser() {
     let user: any = this.currentUser.merge(fromJS(this.userForm.value));
     if (this.userForm.valid && (!user.equals(this.currentUser))) {
-      console.log('trigger save');
       this.triggerSave.next(user);
     }
   }

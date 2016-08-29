@@ -9,3 +9,7 @@ export interface IAction {
   payload?: any;
   meta?: any;
 }
+
+export interface IReducer {
+  (state?: IState, action?: IAction): IState;
+}

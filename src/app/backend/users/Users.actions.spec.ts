@@ -1,36 +1,32 @@
-import { IAction } from '../../base/interfaces';
-import { RestClient } from '../../base/restClient';
-import {
-  addProviders,
-  inject
-} from '@angular/core/testing';
+import { inject, TestBed } from '@angular/core/testing';
 import { Observable } from 'rxjs/Observable';
 
-import { FakeRestClient, createMockStore } from '../../base/testUtils';
+import { FakeRestClient, createMockStore } from '../../utils/testing';
+import { IAction } from '../../base/interfaces';
+import { RestClient } from '../../base/restClient';
 import { UsersActions } from './Users.actions';
 
 
 describe('UsersActions', () => {
   let store: any;
-
-  beforeEach(() => addProviders([
-    {
-      provide: RestClient,
-      useFactory: () => {
-        return new FakeRestClient();
-      },
-    },
-    UsersActions
-  ]));
+  let restClient: FakeRestClient;
 
   beforeEach(() => {
     store = createMockStore({});
+    restClient = new FakeRestClient();
+
+    TestBed.configureTestingModule({
+      providers: [
+        UsersActions,
+        { provide: RestClient, useValue: restClient }
+      ]
+    });
   });
 
   describe('fetchOne', () => {
     let subject: IAction;
 
-    beforeEach(inject([ UsersActions ], (usersActions) => {
+    beforeEach(inject([ UsersActions ], (usersActions: UsersActions) => {
       subject = usersActions.fetchOne(42);
     }));
 
@@ -49,6 +45,10 @@ describe('UsersActions', () => {
         { type: 'USER_FETCH_COMPLETED' },
       ]);
 
+    });
+
+    it('calls the API with correct params', () => {
+      expect(restClient.path).toEqual('users/42');
     });
 
   });

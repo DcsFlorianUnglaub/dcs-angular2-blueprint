@@ -4,37 +4,34 @@ import { fromJS } from 'immutable';
 import { IState, IAction } from '../../base/interfaces';
 
 
-const initialState: IState = fromJS({
+const usersInitialState: IState = fromJS({
   entities: [],
   loading: false,
   error: null
 });
 
-export const usersReducer = (state: IState = initialState, action: IAction): IState => {
+export const usersReducer = (state: IState = usersInitialState, action: IAction): IState => {
   switch (action.type) {
     case USERS_FETCH_START:
-       return state.withMutations(map => {
-        map
-          .set('loading', true)
-          .set('entities', fromJS([]))
-          .set('error', null);
-      });
+      return state.merge(fromJS({
+        loading: true,
+        entities: [],
+        error: null
+      }));
 
     case USERS_FETCH_NEXT:
-      return state.withMutations(map => {
-        map
-          .set('loading', false)
-          .set('entities', fromJS(action.payload))
-          .set('error', null);
-      });
+      return state.merge(fromJS({
+        loading: false,
+        entities: action.payload,
+        error: null
+      }));
 
     case USERS_FETCH_ERROR:
-      return state.withMutations(map => {
-        map
-          .set('loading', false)
-          .set('entities', fromJS([]))
-          .set('error', action.payload);
-      });
+      return state.merge(fromJS({
+        loading: false,
+        entities: [],
+        error: action.payload
+      }));
 
     case USER_SAVE_NEXT:
       return state.update('entities', entities => {

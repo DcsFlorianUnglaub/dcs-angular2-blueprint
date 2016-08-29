@@ -5,7 +5,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NgRedux } from 'ng2-redux';
 
-import { AppComponent }   from './App.component';
 import { routes } from './App.routes';
 
 import { UsersPageComponent } from './users/usersPage/UsersPage.component';
@@ -18,25 +17,23 @@ import { UsersActions } from './backend/users/Users.actions';
 
 
 @NgModule({
-    bootstrap: [AppComponent],
-    declarations: [
-      AppComponent,
-      UsersPageComponent,
-      CurrentUserPageComponent,
-      UsersListComponent,
-      UserFormComponent
-    ],
-    imports:      [
-      BrowserModule,
-      RouterModule.forRoot(routes),
-      FormsModule,
-      ReactiveFormsModule,
-      HttpModule
-    ],
-    providers: [
-      NgRedux,
-      UsersActions,
-      RestClient
-    ]
+  declarations: [
+    UsersPageComponent,
+    CurrentUserPageComponent,
+    UsersListComponent,
+    UserFormComponent
+  ],
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot(routes),
+    FormsModule,
+    ReactiveFormsModule,
+    HttpModule
+  ],
+  providers: [
+    NgRedux,
+    RestClient,
+    UsersActions
+  ]
 })
-export class AppModule {}
+export class AppModule { }

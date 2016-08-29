@@ -1,4 +1,5 @@
 import '@angular/platform-browser';
+import '@angular/platform-browser-dynamic';
 import '@angular/core';
 import '@angular/common';
 import '@angular/forms';
@@ -20,8 +21,6 @@ import 'rxjs/add/observable/of';
 
 if ('production' === ENV) {
   // Production
-
 } else {
   // Development
-  require('angular2-hmr');
 }
