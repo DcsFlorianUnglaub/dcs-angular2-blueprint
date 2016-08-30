@@ -6,7 +6,7 @@
 git clone git@github.com:DcsMarcRemolt/dcs-angular2-blueprint.git
 cd dcs-angular2-blueprint
 npm install
-npm run watch:dev:hmr
+npm run watch:dev:hmr # or watch:dev for classic reload insted of HMR
 ```
 
 On second console, start the fake REST backend:
@@ -17,7 +17,7 @@ npm run backend:mock
 
 Then open your browser at http://localhost:3000 to view the app.
 
-For best development experience, install
+to get the best development experience, install
 
 https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd
 
