@@ -12,12 +12,12 @@
     <td>{{ user.get('username') }}</td>
     <td>{{ user.get('email') }}</td>
     <td>{{ user.get('phone') }}</td>
-    <td><a (click)="deleteUser.next(user)">delete</a></td>
+    <td><a class="delete-link" (click)="deleteUser.next(user)">delete</a></td>
   </tr>
 
-  <tr *ngIf="users.size === 0">
-    <td colspan="4">No users available</td>
+  <tr *ngIf="!usersAvailable">
+    <td colspan="4" class="no-users-info">No users available</td>
   </tr>
 </table>
 
-<div *ngIf="loading">Users loading ...</div>
+<div *ngIf="loading" class="loading-animation">Users loading ...</div>

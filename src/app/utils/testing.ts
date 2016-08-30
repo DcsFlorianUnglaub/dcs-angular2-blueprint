@@ -1,3 +1,4 @@
+import { Routes } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import * as configureStore from 'redux-mock-store';
 
@@ -41,3 +42,11 @@ export class FakeRestClient {
   }
 
 }
+
+class DummyComponent { }
+
+export const dummyRoutes: Routes = [
+  {
+    path: '**', component: DummyComponent
+  }
+];

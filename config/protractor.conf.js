@@ -5,7 +5,6 @@ exports.config = {
     baseUrl: 'http://localhost:3000/',
 
     specs: [
-        helpers.root('src/**/**.e2e.ts'),
         helpers.root('src/**/*.e2e.ts')
     ],
     exclude: [],
@@ -33,5 +32,6 @@ exports.config = {
         browser.ignoreSynchronization = true;
     },
 
-    useAllAngular2AppRoots: true
+    // useAllAngular2AppRoots: true
+    rootElement: 'dcs-app'
 };

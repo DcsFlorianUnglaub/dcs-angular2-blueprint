@@ -40,7 +40,7 @@ export class CurrentUserPageComponent extends ContainerComponent implements OnIn
     this.subscriptions.push(this.route.params.subscribe(params => {
       let id: number = Number(params['id']);
 
-      if (this.currentUser && this.currentUser.get('id') !== id) {
+      if ((!this.currentUser) || this.currentUser.get('id') !== id) {
         this.store.dispatch(this.usersActions.fetchOne(id));
       }
     }));

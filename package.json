@@ -35,6 +35,7 @@
     "angular2",
     "blueprint",
     "rxjs",
+    "redux",
     "webpack"
   ],
   "author": "Marc Remolt <marc.remolt@dcs-fuerth.de> (http://www.dcs-fuerth.de)",
