@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col-sm-12">
+
+    <h1>Order Meals</h1>
+
+    <dcs-meals-grid
+      [meals]="meals$ | async"
+      [loading]="loading$ | async"
+      [error]="error$ | async"
+      [searchFilter]="searchFilter$ | async"
+      [groupFilter]="groupFilter$ | async"
+      [totalPrice]="totalPrice$ | async"
+      [order]="order$ | async"
+      (setSearchFilter)="setSearchFilter($event)"
+      (setGroupFilter)="setGroupFilter($event)"
+      (orderUpdated)="orderUpdated($event)"
+      (resetSearch)="resetSearch()"
+    ></dcs-meals-grid>
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-6 col-md-2">
+    <button type="button" class="btn btn-large btn-block btn-primary"
+      [disabled]="(order$ | async).size === 0" (click)="sendOrder()">Order Meals</button>
+  </div>
+
+  <div class="col-sm-6 col-md-2">
+    <button type="button" class="btn btn-large btn-block btn-default" (click)="resetOrder()">Reset</button>
+  </div>
+</div>
+
+

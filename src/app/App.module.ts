@@ -7,23 +7,41 @@ import { NgRedux } from 'ng2-redux';
 
 import { routes } from './App.routes';
 
+import { HomeComponent } from './home/Home.component';
+import { NotFoundComponent } from './notFound/NotFound.component';
 import { UsersPageComponent } from './users/usersPage/UsersPage.component';
 import { CurrentUserPageComponent } from './users/currentUserPage/CurrentUserPage.component';
 import { UserFormComponent } from './users/userForm/UserForm.component';
 import { UsersListComponent } from './users/usersList/UsersList.component';
 import { NewUserPageComponent } from './users/newUserPage/NewUserPage.component';
+import { MealsPageComponent } from './meals/mealsPage/MealsPage.component';
+import { MealsGridComponent } from './meals/mealsGrid/MealsGrid.component';
+
+import { PriceTooltipDirective } from './meals/priceTooltip/PriceTooltip.directive';
+
+import { PricePipe } from './utils/pipes';
 
 import { RestClient } from './base/restClient';
 import { UsersActions } from './backend/users/Users.actions';
+import { MealsActions } from './backend/meals/Meals.actions';
 
 
 @NgModule({
   declarations: [
+    // components
+    HomeComponent,
+    NotFoundComponent,
     UsersPageComponent,
     CurrentUserPageComponent,
     UsersListComponent,
     UserFormComponent,
-    NewUserPageComponent
+    NewUserPageComponent,
+    MealsPageComponent,
+    MealsGridComponent,
+    // directives
+    PriceTooltipDirective,
+    // pipes
+    PricePipe
   ],
   imports: [
     BrowserModule,
@@ -35,7 +53,8 @@ import { UsersActions } from './backend/users/Users.actions';
   providers: [
     NgRedux,
     RestClient,
-    UsersActions
+    UsersActions,
+    MealsActions
   ]
 })
 export class AppModule { }

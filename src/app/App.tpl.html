@@ -1,3 +1,19 @@
 <div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <ul class="nav nav-tabs">
+        <li role="presentation" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <a routerLink="/">Home</a>
+        </li>
+        <li role="presentation" routerLinkActive="active">
+          <a routerLink="/users">Users</a>
+        </li>
+        <li role="presentation" routerLinkActive="active">
+          <a routerLink="/meals">Order Meals</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
   <router-outlet></router-outlet>
 </div>

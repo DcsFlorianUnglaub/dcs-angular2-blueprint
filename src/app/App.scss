@@ -13,3 +13,29 @@ h1 {
 .error {
   color: red;
 }
+
+strong.match {
+  color: green;
+  text-decoration: underline
+}
+
+.dcs-tooltip:hover {
+  position: relative;
+  font-weight: bold;
+}
+
+/* Tooltip on Top */
+.dcs-tooltip-top[data-tooltip]:hover:after {
+  content: attr(data-tooltip);
+  padding: 4px 8px;
+  position: absolute;
+  left: 0;
+  bottom: 100%;
+  white-space: nowrap;
+  z-index: 20px;
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #999;
+  border-radius: 4px;
+  box-shadow: 6px 6px 3px #999;
+}

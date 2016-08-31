@@ -26,19 +26,15 @@
     {
       "id": 2,
       "name": "Ervin Howell",
-      "username": "Antonette",
+      "username": "ervin.howell",
       "email": "Shanna@melissa.tv",
       "address": {
         "street": "Victor Plains",
         "suite": "Suite 879",
         "city": "Wisokyburgh",
-        "zipcode": "90566-7771",
-        "geo": {
-          "lat": "-43.9509",
-          "lng": "-34.4618"
-        }
+        "zipcode": "90566-7771"
       },
-      "phone": "010-692-6593 x09125",
+      "phone": "010-692-6593 09126",
       "website": "anastasia.net",
       "company": {
         "name": "Deckow-Crist",
@@ -229,6 +225,512 @@
         "catchPhrase": "Centralized empowering task-force",
         "bs": "target end-to-end models"
       }
+    }
+  ],
+  "meals": [
+    {
+      "id": 1,
+      "title": "Gulasch",
+      "description": "mit Gemüsesoße und bunten Nudeln",
+      "price": 3.85,
+      "unit": "Anzahl",
+      "group": "Warengruppe 2"
+    },
+    {
+      "id": 2,
+      "title": "Seelachsfilet mit Tomatenwürfeln",
+      "description": "und Käse überbacken, Kräutersoße und Kartoffelpüree",
+      "price": 4,
+      "unit": "Anzahl",
+      "group": "Warengruppe 5"
+    },
+    {
+      "id": 3,
+      "title": "Putenrollbraten",
+      "description": "mit Soße, Salzkartoffeln und buntem Gemüse",
+      "price": 4,
+      "unit": "Anzahl",
+      "group": "Warengruppe 4"
+    },
+    {
+      "id": 4,
+      "title": "Hefeklöße",
+      "description": "mit heissen Kirschen",
+      "price": 3.85,
+      "unit": "Anzahl",
+      "group": "Warengruppe 2"
+    },
+    {
+      "id": 5,
+      "title": "Rinderbraten",
+      "description": "mit Soße, Klöße und Apfelrotkohl",
+      "price": 4,
+      "unit": "Anzahl",
+      "group": "Warengruppe 6"
+    },
+    {
+      "id": 6,
+      "title": "Bockwürstchen",
+      "description": "mit buntem Kartoffelsalat und Rote Grütze",
+      "price": 4,
+      "unit": "Anzahl",
+      "group": "Warengruppe 5"
+    },
+    {
+      "id": 7,
+      "title": "Königsberger Kochklopse in Kapernsoße",
+      "description": "Salzkartoffeln und Apfel-Möhrensalat",
+      "price": 3.85,
+      "unit": "Anzahl",
+      "group": "Warengruppe 4"
+    },
+    {
+      "id": 8,
+      "title": "Pfannengyros",
+      "description": "mit Reis, Tzaziki und Weißkrautsalat",
+      "price": 4,
+      "unit": "Anzahl",
+      "group": "Warengruppe 4"
+    },
+    {
+      "id": 9,
+      "title": "Tomatencremesuppe",
+      "description": "mit Reiseinlage, frischen Kräutern und Brötchen",
+      "price": 4,
+      "unit": "Anzahl",
+      "group": "Warengruppe 3"
+    },
+    {
+      "id": 10,
+      "title": "Schweineschnitzel",
+      "description": "mit Salzkartoffeln und Balkangemüse",
+      "price": 3.85,
+      "unit": "Anzahl",
+      "group": "Warengruppe 1"
+    },
+    {
+      "id": 11,
+      "title": "Putenbrust",
+      "description": "in Currysoße, Wildreis und Kaisergemüse",
+      "price": 4,
+      "unit": "Anzahl",
+      "group": "Warengruppe 4"
+    },
+    {
+      "id": 12,
+      "title": "pan.  Seelachsfilet",
+      "description": "mit Salzkartoffeln und Kaisergemüse",
+      "price": 4,
+      "unit": "Anzahl",
+      "group": "Warengruppe 6"
+    },
+    {
+      "id": 13,
+      "title": "Reissuppe",
+      "description": "mit Eierstich, Hühnerfleischwürfeln und Nachtisch",
+      "price": 3.85,
+      "unit": "Anzahl",
+      "group": "Warengruppe 4"
+    },
+    {
+      "id": 14,
+      "title": "gebratene Schweineleber",
+      "description": "mit Kartoffelpüree und Zwiebelsoße",
+      "price": 4,
+      "unit": "Anzahl",
+      "group": "Warengruppe 3"
+    },
+    {
+      "id": 15,
+      "title": "Schweinegulasch",
+      "description": "mit Salzkartoffeln und Rosenkohlgemüse",
+      "price": 4,
+      "unit": "Anzahl",
+      "group": "Warengruppe 2"
+    },
+    {
+      "id": 16,
+      "title": "",
+      "description": "",
+      "price": 3.85,
+      "unit": "Anzahl",
+      "group": "Warengruppe 5"
+    },
+    {
+      "id": 17,
+      "title": "Chili con Carne",
+      "description": "mit Reis",
+      "price": 4,
+      "unit": "Anzahl",
+      "group": "Warengruppe 2"
+    },
+    {
+      "id": 18,
+      "title": "Putenschnitzel",
+      "description": "mit Salzkartoffeln, Gemüse und Soße",
+      "price": 4,
+      "unit": "Anzahl",
+      "group": "Warengruppe 2"
+    },
+    {
+      "id": 19,
+      "title": "",
+      "description": "",
+      "price": 3.85,
+      "unit": "Anzahl",
+      "group": "Warengruppe 2"
+    },
+    {
+      "id": 20,
+      "title": "Schweinekammbraten",
+      "description": "mit Soße, Salzkartoffeln und Fingermöhren",
+      "price": 4,
+      "unit": "Anzahl",
+      "group": "Warengruppe 3"
+    },
+    {
+      "id": 21,
+      "title": "Schweinegeschnetzeltes",
+      "description": "mit Gemüsereis",
+      "price": 4,
+      "unit": "Anzahl",
+      "group": "Warengruppe 5"
+    },
+    {
+      "id": 22,
+      "title": "Nudelauflauf",
+      "description": "mit Gemüse",
+      "price": 3.85,
+      "unit": "Anzahl",
+      "group": "Warengruppe 3"
+    },
+    {
+      "id": 23,
+      "title": "Partygrillhaxe",
+      "description": "mit Soße, Salzkartoffeln und Sauerkraut",
+      "price": 4,
+      "unit": "Anzahl",
+      "group": "Warengruppe 5"
+    },
+    {
+      "id": 24,
+      "title": "Ungarischer Kesselgulasch",
+      "description": "mit Knödelscheiben",
+      "price": 4,
+      "unit": "Anzahl",
+      "group": "Warengruppe 6"
+    },
+    {
+      "id": 25,
+      "title": "pan. Seelachsfilet",
+      "description": "mit Kräutersoße, Salzkartoffeln und Salatbeilage",
+      "price": 3.85,
+      "unit": "Anzahl",
+      "group": "Warengruppe 1"
+    },
+    {
+      "id": 26,
+      "title": "Jungschweinebraten",
+      "description": "mit Soße, Salzkartoffeln und Speckbohnen",
+      "price": 4,
+      "unit": "Anzahl",
+      "group": "Warengruppe 4"
+    },
+    {
+      "id": 27,
+      "title": "buntes Eierragout",
+      "description": "Salzkartoffeln und Salat",
+      "price": 4,
+      "unit": "Anzahl",
+      "group": "Warengruppe 3"
+    },
+    {
+      "id": 28,
+      "title": "Hackfleischsoße",
+      "description": "mit Kartoffelpüree und Gewürzgurke",
+      "price": 3.85,
+      "unit": "Anzahl",
+      "group": "Warengruppe 6"
+    },
+    {
+      "id": 29,
+      "title": "Putengeschnetzeltes",
+      "description": "mit Asiagemüse und Reis",
+      "price": 4,
+      "unit": "Anzahl",
+      "group": "Warengruppe 4"
+    },
+    {
+      "id": 30,
+      "title": "vegetarisches Schnitzel",
+      "description": "Kartoffelpüree mit Rahmsoße und Broccoli",
+      "price": 4,
+      "unit": "Anzahl",
+      "group": "Warengruppe 1"
+    },
+    {
+      "id": 31,
+      "title": "Jägerschnitzel",
+      "description": "mit Salzkartoffeln und Sommergemüse",
+      "price": 3.85,
+      "unit": "Anzahl",
+      "group": "Warengruppe 6"
+    },
+    {
+      "id": 32,
+      "title": "Gemüse-Spätzle-Pfanne",
+      "description": "mit Hähnchenbruststreifen, Obst",
+      "price": 4,
+      "unit": "Anzahl",
+      "group": "Warengruppe 2"
+    },
+    {
+      "id": 33,
+      "title": "kräftiger Weißkrauteintopf",
+      "description": "mit Kaßlerwürfeln und Joghurt",
+      "price": 4,
+      "unit": "Anzahl",
+      "group": "Warengruppe 3"
+    },
+    {
+      "id": 34,
+      "title": "Thüringer Kartoffelsuppe",
+      "description": "mit Wiener Würstchen, hausgemachter Fruchtquark",
+      "price": 3.85,
+      "unit": "Anzahl",
+      "group": "Warengruppe 3"
+    },
+    {
+      "id": 35,
+      "title": "Kotelett",
+      "description": "mit Soße, Salzkartoffeln und Kaisergemüse",
+      "price": 4,
+      "unit": "Anzahl",
+      "group": "Warengruppe 2"
+    },
+    {
+      "id": 36,
+      "title": "Lebergulasch",
+      "description": "mit Kartoffelpüree und Gewürzgurke",
+      "price": 4,
+      "unit": "Anzahl",
+      "group": "Warengruppe 5"
+    },
+    {
+      "id": 37,
+      "title": "",
+      "description": "",
+      "price": 3.85,
+      "unit": "Anzahl",
+      "group": "Warengruppe 3"
+    },
+    {
+      "id": 38,
+      "title": "Bratwurstschnecke",
+      "description": "mit Soße, Salzkartoffeln und Sauerkraut",
+      "price": 4,
+      "unit": "Anzahl",
+      "group": "Warengruppe 6"
+    },
+    {
+      "id": 39,
+      "title": "Maultaschen",
+      "description": "mit Tomatensoße und Salatbeilage",
+      "price": 4,
+      "unit": "Anzahl",
+      "group": "Warengruppe 2"
+    },
+    {
+      "id": 40,
+      "title": "",
+      "description": "",
+      "price": 3.85,
+      "unit": "Anzahl",
+      "group": "Warengruppe 4"
+    },
+    {
+      "id": 41,
+      "title": "Schweinelachsschnitzel",
+      "description": "mit Soße, Salzkartoffeln und Möhrengemüse",
+      "price": 4,
+      "unit": "Anzahl",
+      "group": "Warengruppe 5"
+    },
+    {
+      "id": 42,
+      "title": "Hacksteak",
+      "description": "mit Soße, Salzkartoffeln und Bohnengemüse",
+      "price": 4,
+      "unit": "Anzahl",
+      "group": "Warengruppe 1"
+    },
+    {
+      "id": 43,
+      "title": "Reisbrei",
+      "description": "mit Zucker + Zimt, Apfelmus",
+      "price": 3.85,
+      "unit": "Anzahl",
+      "group": "Warengruppe 4"
+    },
+    {
+      "id": 44,
+      "title": "Tomaten-Mozarella-Steak",
+      "description": "mit grünen Bandnudeln",
+      "price": 4,
+      "unit": "Anzahl",
+      "group": "Warengruppe 5"
+    },
+    {
+      "id": 45,
+      "title": "Fleischspieß",
+      "description": "mit Kartoffelpüree und Balkangemüse",
+      "price": 4,
+      "unit": "Anzahl",
+      "group": "Warengruppe 3"
+    },
+    {
+      "id": 46,
+      "title": "Bratklößchen",
+      "description": "mit Salzkartoffeln und Kohlrabigemüse",
+      "price": 3.85,
+      "unit": "Anzahl",
+      "group": "Warengruppe 3"
+    },
+    {
+      "id": 47,
+      "title": "pan. Rotbarschfilet",
+      "description": "in Tomatensoße, Salzkartoffeln und Pfannengemüse",
+      "price": 4,
+      "unit": "Anzahl",
+      "group": "Warengruppe 3"
+    },
+    {
+      "id": 48,
+      "title": "Tortellini mit Käsefüllung",
+      "description": "Tomatensoße",
+      "price": 4,
+      "unit": "Anzahl",
+      "group": "Warengruppe 1"
+    },
+    {
+      "id": 49,
+      "title": "deftige Linsensuppe",
+      "description": "mit Rauchfleisch und Dessert",
+      "price": 3.85,
+      "unit": "Anzahl",
+      "group": "Warengruppe 6"
+    },
+    {
+      "id": 50,
+      "title": "Zwiebelbraten",
+      "description": "mit Soße, Salzkartoffeln und Rosenkohlgemüse",
+      "price": 4,
+      "unit": "Anzahl",
+      "group": "Warengruppe 6"
+    },
+    {
+      "id": 51,
+      "title": "hausgemachte Kartoffelpuffer",
+      "description": "mit Apfelmus",
+      "price": 4,
+      "unit": "Anzahl",
+      "group": "Warengruppe 3"
+    },
+    {
+      "id": 52,
+      "title": "Schweinegulasch",
+      "description": "mit kleinen Nudeln",
+      "price": 3.85,
+      "unit": "Anzahl",
+      "group": "Warengruppe 3"
+    },
+    {
+      "id": 53,
+      "title": "gebratene Hühnerkeule",
+      "description": "mit Salzkartoffeln und Apfelrotkohl",
+      "price": 4,
+      "unit": "Anzahl",
+      "group": "Warengruppe 5"
+    },
+    {
+      "id": 54,
+      "title": "Maultaschen",
+      "description": "Spinat- Käsesoße, Salat",
+      "price": 4,
+      "unit": "Anzahl",
+      "group": "Warengruppe 2"
+    },
+    {
+      "id": 55,
+      "title": "Putengeschnetzeltes",
+      "description": "mit Reis und saisonaler bunter Salat",
+      "price": 3.85,
+      "unit": "Anzahl",
+      "group": "Warengruppe 6"
+    },
+    {
+      "id": 56,
+      "title": "deftiger Rindergulasch",
+      "description": "mit Salzkartoffeln und Kohlrabigemüse",
+      "price": 4,
+      "unit": "Anzahl",
+      "group": "Warengruppe 2"
+    },
+    {
+      "id": 57,
+      "title": "Kohlroulade",
+      "description": "Salzkartoffeln, Soße",
+      "price": 4,
+      "unit": "Anzahl",
+      "group": "Warengruppe 2"
+    },
+    {
+      "id": 58,
+      "title": "",
+      "description": "",
+      "price": 3.85,
+      "unit": "Anzahl",
+      "group": "Warengruppe 3"
+    },
+    {
+      "id": 59,
+      "title": "Gemüseschnitzel",
+      "description": "in Rahmsoße und Kartoffelpüree",
+      "price": 4,
+      "unit": "Anzahl",
+      "group": "Warengruppe 5"
+    },
+    {
+      "id": 60,
+      "title": "Putenbrust",
+      "description": "mit Soße, Salzkartoffeln und Gemüse",
+      "price": 4,
+      "unit": "Anzahl",
+      "group": "Warengruppe 2"
+    },
+    {
+      "id": 61,
+      "title": "",
+      "description": "",
+      "price": 3.85,
+      "unit": "Anzahl",
+      "group": "Warengruppe 1"
+    },
+    {
+      "id": 62,
+      "title": "Hirtenrolle",
+      "description": "mit Soße, Reis und Salatbeilage",
+      "price": 4,
+      "unit": "Anzahl",
+      "group": "Warengruppe 5"
+    },
+    {
+      "id": 63,
+      "title": "Schweineschnitzel",
+      "description": "mit Soße, Salzkartoffeln und Gemüse",
+      "price": 4,
+      "unit": "Anzahl",
+      "group": "Warengruppe 5"
     }
   ]
 }

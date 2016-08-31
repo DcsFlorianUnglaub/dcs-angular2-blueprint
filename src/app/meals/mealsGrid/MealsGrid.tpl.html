@@ -1,0 +1,61 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-sm-12">
+        <form class="form-inline">
+
+          <div class="form-group">
+            <label for="inputSearch">Search</label>
+            <input type="text" class="form-control" id="inputSearch" placeholder="Fulltext Search" autocomplete="off"
+              [value]="searchFilter" (keyup)="setSearchFilter.next($event.target.value)">
+          </div>
+
+          <div class="form-group">
+            <label for="inputGroup">Product Group</label>
+            <select class="form-control" id="inputGroup" [value]="groupFilter" (change)="setGroupFilter.next($event.target.value)">
+              <option value="">Alle</option>
+              <option [value]="group" *ngFor="let group of productGroups">{{ group }}</option>
+            </select>
+          </div>
+
+          <button type="button" class="btn btn-default" (click)="resetSearch.next()">Reset Search</button>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<table class="table table-bordered table-striped table-hover">
+
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th>Product Group</th>
+    <th>Units</th>
+  </tr>
+
+  <tr *ngIf="loading">
+    <td colspan="5">loading ...</td>
+  </tr>
+
+  <tr *ngFor="let meal of filteredMeals, trackBy:identify"[ngClass]="{ success: hasOrder(meal) }">
+    <td [innerHTML]="highlightSearchMatch(meal.get('title'))"></td>
+    <td [innerHTML]="highlightSearchMatch(meal.get('description'))"></td>
+    <td [dcsPriceTooltip]="meal" [units]=getUnits(meal)>{{ meal.get('price') | dcsPrice }}</td>
+    <td>{{ meal.get('group') }}</td>
+    <td>
+      <input type="number" min="0" [value]="order.get(meal.get('id'))" (change)="updateOrder(meal.get('id'), $event.target.value)">
+    </td>
+  </tr>
+
+  <tr>
+    <th colspan="3">&nbsp;</th>
+    <th>Total:</th>
+    <th>{{ totalPrice | dcsPrice }}</th>
+  </tr>
+
+</table>
