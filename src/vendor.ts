@@ -20,6 +20,14 @@ import 'rxjs/add/observable/interval';
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/observable/of';
 
+import '@angularclass/hmr';
+import 'immutable';
+import 'ng2-redux';
+import 'redux';
+import 'redux-immutable';
+import 'redux-logger';
+import 'validator';
+
 if ('production' === ENV) {
   // Production
 } else {
