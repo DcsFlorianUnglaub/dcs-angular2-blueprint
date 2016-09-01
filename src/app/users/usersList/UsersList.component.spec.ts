@@ -36,6 +36,7 @@ describe('UsersListComponent', () => {
     });
 
     TestBed.compileComponents();
+    console.log('This does not get logged as compileComponents throws "Unexpected value undefined imported by the module DynamicTestModule"');
 
     fixture = TestBed.createComponent(UsersListComponent);
     component = fixture.componentInstance;
@@ -112,16 +113,15 @@ describe('UsersListComponent', () => {
       element = fixture.debugElement.nativeElement;
     }));
 
-    it('fires the event if a delete link is clicked', (done) => {
+    fit('fires the event if a delete link is clicked', async(() => {
       const deleteLink = <HTMLElement>element.querySelector('.delete-link');
 
       component.deleteUser.subscribe(user => {
         expect(userFixture.equals(user)).toBeTruthy();
-        done();
       });
 
       deleteLink.click();
-    });
+    }));
 
   });
 
