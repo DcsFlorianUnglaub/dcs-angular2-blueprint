@@ -21,3 +21,9 @@ declare var configureStore: IConfigureStore;
 declare module 'redux-mock-store' {
   export = configureStore;
 }
+
+declare module jasmine {
+    interface Matchers {
+        toEqualImmutable(expected: any): void;
+    }
+}

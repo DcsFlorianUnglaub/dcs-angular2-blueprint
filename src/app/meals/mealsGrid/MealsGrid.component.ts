@@ -46,6 +46,9 @@ export class MealsGridComponent extends PresentationalComponent {
   }
 
   highlightSearchMatch(text: string): string {
+    if (!this.searchFilter) {
+      return text;
+    }
     return text.replace(this.searchMatch, '<strong class="match">$&</strong>');
   }
 
@@ -58,7 +61,7 @@ export class MealsGridComponent extends PresentationalComponent {
   }
 
   getUnits(meal: Map<string, any>): number {
-    return this.order.get(meal.get('id'));
+    return this.order.get(String(meal.get('id'))) || 0;
   }
 
 }

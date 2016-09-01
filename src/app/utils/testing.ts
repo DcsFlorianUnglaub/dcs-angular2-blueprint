@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import * as configureStore from 'redux-mock-store';
+import { fromJS } from 'immutable';
 
 import { observableMiddleware } from '../base/middleware';
 
@@ -50,3 +51,37 @@ export const dummyRoutes: Routes = [
     path: '**', component: DummyComponent
   }
 ];
+
+
+export const customMatchers: jasmine.CustomMatcherFactories = {
+  toEqualImmutable: function (util: jasmine.MatchersUtil, customEqualityTesters: Array<jasmine.CustomEqualityTester>): jasmine.CustomMatcher {
+    return {
+      compare: function (actual: any, expected: any): jasmine.CustomMatcherResult {
+        actual = fromJS(actual);
+        expected = fromJS(expected);
+
+        let pass: boolean = actual.equals(expected);
+        let message: string = '';
+
+        if (!pass) {
+          message = `
+Expected
+
+${JSON.stringify(actual.toJSON(), null, 2)}
+
+to equal
+
+${JSON.stringify(expected.toJSON(), null, 2)}
+          `;
+        }
+
+        const result: jasmine.CustomMatcherResult = {
+          pass: pass,
+          message: message
+        };
+
+        return result;
+      }
+    };
+  }
+};
