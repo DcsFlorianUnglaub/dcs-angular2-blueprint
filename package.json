@@ -29,7 +29,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DcsMarcRemolt/dcs-angular2-blueprint.git"
+    "url": ""
   },
   "keywords": [
     "angular2",
@@ -41,9 +41,9 @@
   "author": "Marc Remolt <marc.remolt@dcs-fuerth.de> (http://www.dcs-fuerth.de)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/DcsMarcRemolt/dcs-angular2-blueprint/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/DcsMarcRemolt/dcs-angular2-blueprint#readme",
+  "homepage": "",
   "devDependencies": {
     "@types/core-js": "^0.9.32",
     "@types/jasmine": "2.2.33",
