@@ -21,6 +21,7 @@ export class MealsPageComponent extends ContainerComponent implements OnInit {
   @select(['meals', 'searchFilter']) searchFilter$: Observable<string>;
   @select(['meals', 'groupFilter']) groupFilter$: Observable<string>;
   @select(['meals', 'order']) order$: Observable<Map<string, number>>;
+  @select((state: IState) => state.getIn(['meals', 'order']) ? state.getIn(['meals', 'order']).size : 0) orderSize$: Observable<number>;
   @select(totalPrice) totalPrice$: Observable<number>;
 
   constructor(private store: NgRedux<IState>, private actions: MealsActions) {

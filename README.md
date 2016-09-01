@@ -5,7 +5,7 @@
 ```bash
 git clone git@github.com:DcsMarcRemolt/dcs-angular2-blueprint.git
 cd dcs-angular2-blueprint
-npm install
+npm install # will throw warnings about missing python on windows - just ignore, still works
 npm run watch:dev:hmr # or watch:dev for classic reload insted of HMR
 ```
 

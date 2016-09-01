@@ -41,13 +41,16 @@ class MainModule {
     private store: NgRedux<IState>,
     private devTools: DevToolsExtension
   ) {
-    if (!module.hot) {
-      this.setupStore();
-    }
+    this.setupStore();
   }
 
   hmrOnInit(hmrStore) {
-    this.setupStore(hmrStore);
+    if (hmrStore) {
+      this.store.dispatch({
+        type: 'HMR_RESET_STATE',
+        payload: hmrStore.appState || Map({})
+      });
+    }
   }
 
   hmrOnDestroy(hmrStore) {
@@ -67,10 +70,10 @@ class MainModule {
     delete hmrStore.disposeOldHosts;
   }
 
-  protected setupStore(hmrStore: { appState: IState } = { appState: Map({}) }): void {
+  protected setupStore(): void {
     let middleware: Array<any> = [observableMiddleware];
     let enhancers: Array<any> = [];
-    let initialState = hmrStore.appState;
+    let initialState = Map({});
     let tickTimeoutId: any;
 
     if (ENV === 'development') {

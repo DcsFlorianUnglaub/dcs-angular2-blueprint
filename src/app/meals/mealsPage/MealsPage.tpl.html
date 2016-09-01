@@ -23,7 +23,7 @@
 <div class="row">
   <div class="col-sm-6 col-md-2">
     <button type="button" class="btn btn-large btn-block btn-primary"
-      [disabled]="(order$ | async).size === 0" (click)="sendOrder()">Order Meals</button>
+      [disabled]="(orderSize$ | async) === 0" (click)="sendOrder()">Order Meals</button>
   </div>
 
   <div class="col-sm-6 col-md-2">

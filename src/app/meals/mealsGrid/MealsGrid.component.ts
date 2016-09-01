@@ -25,6 +25,10 @@ export class MealsGridComponent extends PresentationalComponent {
   @Output() resetSearch = <EventEmitter<any>> new EventEmitter();
 
   get filteredMeals(): List<Map<string, any>> {
+    if (!this.meals) {
+      return List([]);
+    }
+
     const searchMatch: RegExp = this.searchMatch;
 
     return this.meals
@@ -34,6 +38,10 @@ export class MealsGridComponent extends PresentationalComponent {
   }
 
   get productGroups(): List<string> {
+    if (!this.meals) {
+      return List([]);
+    }
+
     return this.meals
       .map(meal => meal.get('group'))
       .toSet()
