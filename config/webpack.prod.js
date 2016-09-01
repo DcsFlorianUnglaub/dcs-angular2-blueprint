@@ -30,18 +30,13 @@ module.exports = webpackMerge(commonConfig, {
 
   plugins: [
     new WebpackMd5Hash(),
-    new DedupePlugin(),
+    // new DedupePlugin(), TODO: Reenable after https://github.com/webpack/webpack/issues/2644 is fixed //294
 
     new UglifyJsPlugin({
       beautify: false,
-      // seems broken with current Angular RC.5
-      // TODO: recheck later
-      // mangle: {
-      //   screw_ie8 : true
-      // },
       mangle: {
-        screw_ie8 : true,
-        keep_fnames: true
+        screw_ie8 : true
+        // keep_fnames: true
       },
       compress: {
         screw_ie8: true,

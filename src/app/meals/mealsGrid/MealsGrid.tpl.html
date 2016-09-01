@@ -48,7 +48,7 @@
     <td [dcsPriceTooltip]="meal" [units]=getUnits(meal)>{{ meal.get('price') | dcsPrice }}</td>
     <td>{{ meal.get('group') }}</td>
     <td>
-      <input type="number" min="0" [value]="order.get(meal.get('id'))" (change)="updateOrder(meal.get('id'), $event.target.value)">
+      <input type="number" min="0" [value]="getUnits(meal)" (change)="updateOrder(meal.get('id'), $event.target.value)">
     </td>
   </tr>
 

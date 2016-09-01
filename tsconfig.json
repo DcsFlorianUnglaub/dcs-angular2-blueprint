@@ -9,14 +9,15 @@
     "experimentalDecorators": true,
     "sourceMap": true,
     "noEmitHelpers": true,
-    "lib": ["es2015", "dom"],
+    // "lib": ["es2015", "dom"],
     "baseUrl": "./src",
     "paths": {},
     "types": [
       "node",
       "webpack",
       "jasmine",
-      "protractor"
+      "protractor",
+      "core-js"
     ]
   },
   "exclude": [

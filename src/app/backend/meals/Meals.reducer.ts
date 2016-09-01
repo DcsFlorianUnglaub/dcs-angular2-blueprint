@@ -54,6 +54,7 @@ export const mealsReducer: IReducer = createReducer(mealsInitialState, {
   [MEALS_UPDATE_ORDER](state: IState, action: IAction): IState {
     let { mealId, units } = action.payload;
     units = Number(units);
+    mealId = String(mealId);
 
     if (units) {
       return state
