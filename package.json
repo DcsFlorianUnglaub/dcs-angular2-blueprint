@@ -10,7 +10,7 @@
     "watch:dev:hmr": "npm run watch:dev -- --hot",
     "serve:prod": "http-server build/production --gzip -p 8080",
     "test": "karma start",
-    "test:watch": "karma start --singleRun=false --autoWatch=true",
+    "test:watch": "karma start --singleRun=false --autoWatch=true --report-slower-than=100",
     "posttest": "npm run coverage",
     "coverage": "npm run coverage:remap && npm run coverage:report",
     "coverage:remap": "remap-istanbul -i coverage/coverage.json -o coverage/coverage.json -t json -e node_modules,tests,karma.entry.ts",

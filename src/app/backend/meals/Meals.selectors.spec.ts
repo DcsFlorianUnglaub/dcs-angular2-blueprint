@@ -42,7 +42,7 @@ describe('Meals selectors', () => {
     });
 
     it('correctly calculates the total price based on state', () => {
-      console.log(totalPrice(stateFixture));
+      expect(totalPrice(stateFixture)).toEqual(19.55);
     });
 
 

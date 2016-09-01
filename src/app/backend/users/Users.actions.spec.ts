@@ -1,4 +1,4 @@
-import { inject, TestBed } from '@angular/core/testing';
+import { inject, TestBed, async } from '@angular/core/testing';
 import { Observable } from 'rxjs/Observable';
 
 import { FakeRestClient, createMockStore } from '../../utils/testing';
@@ -11,7 +11,7 @@ describe('UsersActions', () => {
   let store: any;
   let restClient: FakeRestClient;
 
-  beforeEach(() => {
+  beforeEach(async(() => {
     store = createMockStore({});
     restClient = new FakeRestClient();
 
@@ -21,14 +21,14 @@ describe('UsersActions', () => {
         { provide: RestClient, useValue: restClient }
       ]
     });
-  });
+  }));
 
   describe('fetchOne', () => {
     let subject: IAction;
 
-    beforeEach(inject([ UsersActions ], (usersActions: UsersActions) => {
-      subject = usersActions.fetchOne(42);
-    }));
+    beforeEach(async(inject([ UsersActions ], (usersActions: UsersActions) => {
+      subject = usersActions.fetchOne(43);
+    })));
 
     it('returns the correct action object', () => {
       expect(subject.type).toEqual('USER_FETCH');
@@ -48,7 +48,7 @@ describe('UsersActions', () => {
     });
 
     it('calls the API with correct params', () => {
-      expect(restClient.path).toEqual('users/42');
+      expect(restClient.path).toEqual('users/43');
     });
 
   });
