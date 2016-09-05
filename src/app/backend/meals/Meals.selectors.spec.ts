@@ -3,6 +3,7 @@ import { fromJS, Map } from 'immutable';
 import { totalPrice } from './Meals.selectors';
 import { IState } from '../../base/interfaces';
 
+
 describe('Meals selectors', () => {
 
   describe('totalPrice', () => {
@@ -50,7 +51,6 @@ describe('Meals selectors', () => {
     it('correctly calculates the total price based on state', () => {
       expect(totalPrice(stateFixture)).toEqual(19.55);
     });
-
 
   });
 
