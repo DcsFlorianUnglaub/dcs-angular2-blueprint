@@ -6,14 +6,12 @@ import { Map } from 'immutable';
 })
 export class PriceTooltipDirective implements OnChanges {
 
-  @Input('dcsPriceTooltip') dcsPriceTooltip: Map<string, any>;
+  @Input() dcsPriceTooltip: Map<string, any>;
   @Input() units: number;
 
   @HostBinding('class') hostClass: string = 'dcs-tooltip dcs-tooltip-top';
   @HostBinding('attr.data-tooltip') message: string = '';
 
-
-  constructor() { }
 
   ngOnChanges() {
     this.message = this.createMessage(this.dcsPriceTooltip.get('price'), this.units);

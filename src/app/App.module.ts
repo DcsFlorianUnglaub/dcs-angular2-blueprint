@@ -16,6 +16,7 @@ import { UsersListComponent } from './users/usersList/UsersList.component';
 import { NewUserPageComponent } from './users/newUserPage/NewUserPage.component';
 import { MealsPageComponent } from './meals/mealsPage/MealsPage.component';
 import { MealsGridComponent } from './meals/mealsGrid/MealsGrid.component';
+import { FormBlockComponent } from './users/formBlock/FormBlock.component';
 
 import { PriceTooltipDirective } from './meals/priceTooltip/PriceTooltip.directive';
 
@@ -38,6 +39,7 @@ import { MealsActions } from './backend/meals/Meals.actions';
     NewUserPageComponent,
     MealsPageComponent,
     MealsGridComponent,
+    FormBlockComponent,
     // directives
     PriceTooltipDirective,
     // pipes

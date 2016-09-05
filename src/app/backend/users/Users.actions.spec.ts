@@ -40,7 +40,7 @@ describe('UsersActions', () => {
       const actions = store.getActions();
 
       expect(actions).toEqual([
-        { type: 'USER_FETCH_START' },
+        { type: 'USER_FETCH_START', meta: undefined },
         { type: 'USER_FETCH_NEXT', payload: 'fake payload' },
         { type: 'USER_FETCH_COMPLETED' },
       ]);

@@ -19,24 +19,24 @@ export class UserFormComponent extends PresentationalComponent implements OnChan
 
   userForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private fb: FormBuilder) {
     super();
 
-    this.userForm = this.formBuilder.group({
+    this.userForm = this.fb.group({
       name: ['', [Validators.required]],
       username: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]],
       email: ['', [Validators.required, validateEmail]],
       phone: ['', [validatePhone]],
       website: ['', [validateFQDN]],
 
-      address: this.formBuilder.group({
+      address: this.fb.group({
         street: ['', [Validators.required]],
         suite: [''],
         city: ['', [Validators.required]],
         zipcode: ['', [Validators.required]]
       }),
 
-      company: this.formBuilder.group({
+      company: this.fb.group({
         name: ['', [Validators.required]],
         catchPhrase: ['', [Validators.required]],
         bs: ['']

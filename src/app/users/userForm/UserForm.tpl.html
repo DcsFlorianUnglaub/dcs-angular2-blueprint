@@ -8,16 +8,15 @@
 
       <legend>User</legend>
 
-
-      <div class="form-group" [ngClass]="{ 'has-error': hasError(userForm, 'name') }">
+      <dcs-form-block [hasError]="hasError(userForm, 'name')">
         <label for="inpuFullName" class="col-sm-2 control-label">Name</label>
         <div class="col-sm-10">
           <input type="text" class="form-control" id="inputFullName" placeholder="Name" formControlName="name">
           <span class="help-block" *ngIf="hasError(userForm, 'name')">Required!</span>
         </div>
-      </div>
+      </dcs-form-block>
 
-      <div class="form-group" [ngClass]="{ 'has-error': hasError(userForm, 'username') }">
+      <dcs-form-block [hasError]="hasError(userForm, 'username')">
         <label for="inpuUserName" class="col-sm-2 control-label">Username</label>
         <div class="col-sm-10">
           <input type="text" class="form-control" id="inputUserName" placeholder="Username" formControlName="username">
@@ -30,16 +29,16 @@
             The username must be at most {{ userForm.controls.username.errors.maxlength.requiredLength }} characters long.
           </span>
         </div>
-      </div>
+      </dcs-form-block>
 
-      <div class="form-group" [ngClass]="{ 'has-error': hasError(userForm, 'email') }">
+      <dcs-form-block [hasError]="hasError(userForm, 'email')">
         <label for="inputEmail" class="col-sm-2 control-label">E-Mail</label>
         <div class="col-sm-10">
           <input type="email" class="form-control" id="inputEmail" placeholder="Email" formControlName="email">
         </div>
-      </div>
+      </dcs-form-block>
 
-      <div class="form-group" [ngClass]="{ 'has-error': hasError(userForm, 'phone') }">
+      <dcs-form-block [hasError]="hasError(userForm, 'phone')">
         <label for="inputPhone" class="col-sm-2 control-label">Phone</label>
         <div class="col-sm-10">
           <input type="text" class="form-control" id="inputPhone" placeholder="Phone" formControlName="phone">
@@ -48,9 +47,9 @@
             This is no valid phone number.
           </span>
         </div>
-      </div>
+      </dcs-form-block>
 
-      <div class="form-group" [ngClass]="{ 'has-error': hasError(userForm, 'website') }">
+      <dcs-form-block [hasError]="hasError(userForm, 'website')">
         <label for="inputWebsite" class="col-sm-2 control-label">Website</label>
         <div class="col-sm-10">
           <input type="text" class="form-control" id="inputWebsite" placeholder="Website" formControlName="website">
@@ -59,7 +58,7 @@
             This is no valid website domain.
           </span>
         </div>
-      </div>
+      </dcs-form-block>
 
     </fieldset>
 
@@ -68,33 +67,33 @@
 
       <legend>Address</legend>
 
-      <div class="form-group" [ngClass]="{ 'has-error': hasError(userForm.controls.address, 'street') }">
+      <dcs-form-block [hasError]="hasError(userForm.controls.address, 'street')">
         <label for="inputStreet" class="col-sm-2 control-label">Street</label>
         <div class="col-sm-10">
           <input type="text" class="form-control" id="inputStreet" placeholder="Street" formControlName="street">
         </div>
-      </div>
+      </dcs-form-block>
 
-      <div class="form-group" [ngClass]="{ 'has-error': hasError(userForm.controls.address, 'suite') }">
+      <dcs-form-block [hasError]="hasError(userForm.controls.address, 'suite')">
         <label for="inputSuite" class="col-sm-2 control-label">Suite</label>
         <div class="col-sm-10">
           <input type="text" class="form-control" id="inputSuite" placeholder="Suite" formControlName="suite">
         </div>
-      </div>
+      </dcs-form-block>
 
-      <div class="form-group" [ngClass]="{ 'has-error': hasError(userForm.controls.address, 'zipcode') }">
+      <dcs-form-block [hasError]="hasError(userForm.controls.address, 'zipcode')">
         <label for="inputZipcode" class="col-sm-2 control-label">Zip code</label>
         <div class="col-sm-10">
           <input type="text" class="form-control" id="inputZipcode" placeholder="Zip code" formControlName="zipcode">
         </div>
-      </div>
+      </dcs-form-block>
 
-      <div class="form-group" [ngClass]="{ 'has-error': hasError(userForm.controls.address, 'city') }">
+      <dcs-form-block [hasError]="hasError(userForm.controls.address, 'city')">
         <label for="inputCity" class="col-sm-2 control-label">City</label>
         <div class="col-sm-10">
           <input type="text" class="form-control" id="inputCity" placeholder="City" formControlName="city">
         </div>
-      </div>
+      </dcs-form-block>
 
     </fieldset>
 
@@ -102,26 +101,26 @@
 
       <legend>Company</legend>
 
-      <div class="form-group" [ngClass]="{ 'has-error': hasError(userForm.controls.company, 'name') }">
+      <dcs-form-block [hasError]="hasError(userForm.controls.company, 'name')">
         <label for="inputCompanyName" class="col-sm-2 control-label">Name</label>
         <div class="col-sm-10">
           <input type="text" class="form-control" id="inputCompanyName" placeholder="Name" formControlName="name">
         </div>
-      </div>
+      </dcs-form-block>
 
-      <div class="form-group" [ngClass]="{ 'has-error': hasError(userForm.controls.company, 'catchPhrase') }">
+      <dcs-form-block [hasError]="hasError(userForm.controls.company, 'catchPhrase')">
         <label for="inputCatchphrase" class="col-sm-2 control-label">Name</label>
         <div class="col-sm-10">
           <input type="text" class="form-control" id="inputCatchphrase" placeholder="Catchphrase" formControlName="catchPhrase">
         </div>
-      </div>
+      </dcs-form-block>
 
-      <div class="form-group" [ngClass]="{ 'has-error': hasError(userForm.controls.company, 'bs') }">
+      <dcs-form-block [hasError]="hasError(userForm.controls.company, 'bs')">
         <label for="inputBs" class="col-sm-2 control-label">BS</label>
         <div class="col-sm-10">
           <input type="text" class="form-control" id="inputBs" placeholder="BS" formControlName="bs">
         </div>
-      </div>
+      </dcs-form-block>
 
     </fieldset>
 
@@ -139,5 +138,3 @@
 <div *ngIf="loading">loading ...</div>
 
 <a routerLink="/users">back</a>
-
-

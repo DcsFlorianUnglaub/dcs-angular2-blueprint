@@ -5,16 +5,22 @@ $gray-base: #333;
 
 @import '../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
 
+// hot relaoding workaround,
+// don't remove this selector or App.scss will be loaded over and over again
+p[_ngfoobar] {
+  font-size: inherit;
+}
+
 // write or import app css
 h1 {
   color: #111;
 }
 
 .error {
-  color: red;
+  color: #a94442;
 }
 
-strong.match {
+.match {
   color: green;
   text-decoration: underline
 }
@@ -38,4 +44,8 @@ strong.match {
   border: 1px solid #999;
   border-radius: 4px;
   box-shadow: 6px 6px 3px #999;
+}
+
+.content {
+  margin-top: 50px;
 }

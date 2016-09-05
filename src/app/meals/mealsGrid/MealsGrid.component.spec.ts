@@ -31,10 +31,9 @@ const MEALS_FIXTURE: List<any> = fromJS([
   },
 ]);
 
-const ORDER_FIXTURE: Map<string, number> = Map({
-  12: 3,
-  14: 2
-});
+const ORDER_FIXTURE = <Map<any, number>>Map()
+  .set(MEALS_FIXTURE.get(0), 3)
+  .set(MEALS_FIXTURE.get(2), 2);
 
 
 describe('MealsGridComponent', () => {
@@ -121,10 +120,9 @@ describe('MealsGridComponent', () => {
       subject.order = <Map<string, number>>Map({});
     });
 
-    describe('with no searchFilter or gruopFilter', () => {
+    describe('with no groupFilter', () => {
 
       beforeEach(() => {
-        subject.searchFilter = '';
         subject.groupFilter = '';
       });
 
@@ -134,40 +132,9 @@ describe('MealsGridComponent', () => {
 
     });
 
-    describe('with searchFilter', () => {
-
-      beforeEach(() => {
-        subject.searchFilter = 'schwein';
-        subject.groupFilter = '';
-      });
-
-      it('only returns the correct matches', () => {
-        expect(subject.filteredMeals).toEqualImmutable([
-          MEALS_FIXTURE.get(2)
-        ]);
-      });
-
-    });
-
     describe('with groupFilter', () => {
 
       beforeEach(() => {
-        subject.searchFilter = '';
-        subject.groupFilter = 'Warengruppe 4';
-      });
-
-      it('only returns the correct matches', () => {
-        expect(subject.filteredMeals).toEqualImmutable([
-          MEALS_FIXTURE.get(1)
-        ]);
-      });
-
-    });
-
-    describe('with searchFilter and gruopFilter', () => {
-
-      beforeEach(() => {
-        subject.searchFilter = 'suppe';
         subject.groupFilter = 'Warengruppe 4';
       });
 
@@ -183,7 +150,6 @@ describe('MealsGridComponent', () => {
 
       beforeEach(() => {
         subject.order = ORDER_FIXTURE;
-        subject.searchFilter = 'np match';
         subject.groupFilter = 'invalid';
       });
 

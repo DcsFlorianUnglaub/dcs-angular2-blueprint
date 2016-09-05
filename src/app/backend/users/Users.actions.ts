@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Map } from 'immutable';
+
 import { RestClient } from '../../base/restClient';
+import { IAction } from '../../base/interfaces';
 
 
 export const USERS_FETCH: string = 'USERS_FETCH';
@@ -27,36 +31,36 @@ export class UsersActions {
 
   constructor(private restClient: RestClient) { }
 
-  fetch(): any {
+  fetch(): IAction {
     return {
       type: USERS_FETCH,
       payload: this.restClient.get('users')
     };
   }
 
-  fetchOne(id: number): any {
+  fetchOne(id: number): IAction {
     return {
       type: USER_FETCH,
       payload: this.restClient.get(`users/${id}`)
     };
   }
 
-  save(user: any) {
+  save(user: Map<string, any>): IAction {
+    let payload: Observable<{}>;
+
     if (user.get('id')) {
-      return {
-        type: USER_SAVE,
-        payload: this.restClient.put(`users/${user.get('id')}`, user.toJS())
-      };
+      payload = this.restClient.put(`users/${user.get('id')}`, user.toJS());
     } else {
-      return {
-        type: USER_SAVE,
-        payload: this.restClient.post(`users`, user.toJS())
-      };
+      payload = this.restClient.post(`users`, user.toJS());
     }
 
+    return {
+      type: USER_SAVE,
+      payload: payload
+    };
   }
 
-  delete(user: any) {
+  delete(user: Map<string, any>): IAction {
     return {
       type: USER_DELETE,
       payload: this.restClient

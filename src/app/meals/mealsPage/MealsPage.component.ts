@@ -1,3 +1,4 @@
+import { Subject } from 'rxjs/Subject';
 import { Component, OnInit } from '@angular/core';
 import { NgRedux, select } from 'ng2-redux';
 import { Observable } from 'rxjs/Observable';
@@ -6,7 +7,7 @@ import { List, Map } from 'immutable';
 import { IState } from '../../base/interfaces';
 import { ContainerComponent } from '../../base/component/ContainerComponent';
 import { MealsActions } from '../../backend/meals/Meals.actions';
-import { totalPrice } from '../../backend/meals/Meals.selectors';
+import { totalPrice, orderSize } from '../../backend/meals/Meals.selectors';
 
 
 @Component({
@@ -21,8 +22,10 @@ export class MealsPageComponent extends ContainerComponent implements OnInit {
   @select(['meals', 'searchFilter']) searchFilter$: Observable<string>;
   @select(['meals', 'groupFilter']) groupFilter$: Observable<string>;
   @select(['meals', 'order']) order$: Observable<Map<string, number>>;
-  @select((state: IState) => state.getIn(['meals', 'order']) ? state.getIn(['meals', 'order']).size : 0) orderSize$: Observable<number>;
+  @select(orderSize) orderSize$: Observable<number>;
   @select(totalPrice) totalPrice$: Observable<number>;
+
+  cancelSearch: Subject<any> = new Subject();
 
   constructor(private store: NgRedux<IState>, private actions: MealsActions) {
     super();
@@ -32,18 +35,26 @@ export class MealsPageComponent extends ContainerComponent implements OnInit {
     if (this.store.getState().getIn(['meals', 'entities']).size === 0) {
       this.store.dispatch(this.actions.fetch());
     }
+
+    // this is why we need to unsubscribe when the Component is destroyed
+    // navigate multiple times between "Users" and "Order Meals" and then do search
+    // we call this "event leak" based on the term "memory leak"
+    // this.searchFilter$.subscribe((search: string) => {
+    //   console.log('search change: ', search, performance.now(), this.searchFilter$);
+    // });
   }
 
   setSearchFilter(search: string) {
-    this.store.dispatch(this.actions.setSearchFilter(search));
+    this.cancelSearch.next();
+    this.store.dispatch(this.actions.search(search, this.cancelSearch));
   }
 
   setGroupFilter(group: string) {
     this.store.dispatch(this.actions.setGroupFilter(group));
   }
 
-  orderUpdated({ mealId, units }: { mealId: number, units: string }) {
-    this.store.dispatch(this.actions.updateOrder(mealId, units));
+  orderUpdated({ meal, units }: { meal: Map<string, any>, units: string }) {
+    this.store.dispatch(this.actions.updateOrder(meal, units));
   }
 
   sendOrder() {
@@ -55,7 +66,8 @@ export class MealsPageComponent extends ContainerComponent implements OnInit {
   }
 
   resetSearch() {
-    this.store.dispatch(this.actions.resetSearch());
+    this.cancelSearch.next();
+    this.store.dispatch(this.actions.search('', this.cancelSearch));
   }
 
 }

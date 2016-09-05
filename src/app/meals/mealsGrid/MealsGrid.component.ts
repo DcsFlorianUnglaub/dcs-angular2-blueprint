@@ -7,7 +7,10 @@ import { PresentationalComponent } from '../../base/component/PresentationalComp
 @Component({
   selector: 'dcs-meals-grid',
   template: require('./MealsGrid.tpl.html'),
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  styles: [
+    require('./MealsGrid.scss').toString()
+  ]
 })
 export class MealsGridComponent extends PresentationalComponent {
 
@@ -17,7 +20,7 @@ export class MealsGridComponent extends PresentationalComponent {
   @Input() searchFilter: string;
   @Input() groupFilter: string;
   @Input() totalPrice: number;
-  @Input() order: Map<string, number>;
+  @Input() order: Map<any, number>;
 
   @Output() setSearchFilter = <EventEmitter<string>> new EventEmitter().debounceTime(300);
   @Output() setGroupFilter = <EventEmitter<string>> new EventEmitter();
@@ -25,15 +28,23 @@ export class MealsGridComponent extends PresentationalComponent {
   @Output() resetSearch = <EventEmitter<any>> new EventEmitter();
 
   get filteredMeals(): List<Map<string, any>> {
-    if (!this.meals) {
+    if (this.loading) {
       return List([]);
     }
 
-    const searchMatch: RegExp = this.searchMatch;
+    let orders = List(this.order.keys());
 
-    return this.meals
-      .filter(meal => (!this.searchFilter) || this.hasOrder(meal) || meal.get('title').match(searchMatch) || meal.get('description').match(searchMatch))
-      .filter(meal => (!this.groupFilter)  || this.hasOrder(meal) || meal.get('group') === this.groupFilter)
+    if (!this.meals) {
+      return orders;
+    }
+
+    let filtered: List<any> = this.meals
+      .filter(meal => (!this.groupFilter) || meal.get('group') === this.groupFilter)
+      .toList();
+
+    return orders
+      .filterNot(order => filtered.includes(order))
+      .concat(filtered)
       .toList();
   }
 
@@ -60,8 +71,8 @@ export class MealsGridComponent extends PresentationalComponent {
     return text.replace(this.searchMatch, '<strong class="match">$&</strong>');
   }
 
-  updateOrder(mealId: number, units: number) {
-    this.orderUpdated.next({ mealId, units });
+  updateOrder(meal: Map<string, any>, units: number) {
+    this.orderUpdated.next({ meal, units });
   }
 
   hasOrder(meal: Map<string, any>): boolean {
@@ -69,7 +80,7 @@ export class MealsGridComponent extends PresentationalComponent {
   }
 
   getUnits(meal: Map<string, any>): number {
-    return this.order.get(String(meal.get('id'))) || 0;
+    return this.order.get(meal) || 0;
   }
 
 }

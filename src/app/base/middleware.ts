@@ -21,7 +21,15 @@ export const observableMiddleware: any = store => next => action => {
     let baseType: string = action.type;
     let obs: Observable<any> = action.payload;
 
-    store.dispatch({ type: `${baseType}_START` });
+    if (action.meta && action.meta.cancel) {
+      // if the action has a cancel observable, use it
+      obs = obs.takeUntil(action.meta.cancel);
+    }
+
+    store.dispatch({
+      type: `${baseType}_START`,
+      meta: action.meta
+    });
 
     subscriptions.push(obs.subscribe(
       (data: any) => store.dispatch({ type: `${baseType}_NEXT`, payload: data }),

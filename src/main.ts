@@ -1,15 +1,15 @@
+import { NgModule, ApplicationRef, enableProdMode, Inject } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { RouterModule } from '@angular/router';
-import { NgModule, ApplicationRef, enableProdMode } from '@angular/core';
 import { removeNgStyles, createNewHosts, bootloader } from '@angularclass/hmr';
 import { NgRedux, DevToolsExtension } from 'ng2-redux';
 import { fromJS, Map } from 'immutable';
 
 import { AppComponent } from './app/App.component';
 import { AppModule } from './app/App.module';
-import { IState } from './app/base/interfaces';
+import { IReducer, IState } from './app/base/interfaces';
 import { loggerMiddleware, observableMiddleware } from './app/base/middleware';
-import { rootReducer } from './app/backend/Root.reducer';
+import { rootReducer, RootReducer } from './app/backend/Root.reducer';
 
 
 console.time('bootstrap');
@@ -32,14 +32,16 @@ console.time('bootstrap');
   ],
   providers: [
     NgRedux,
-    DevToolsExtension
+    DevToolsExtension,
+    { provide: RootReducer, useValue: rootReducer }
   ]
 })
 class MainModule {
     constructor(
     private appRef: ApplicationRef,
     private store: NgRedux<IState>,
-    private devTools: DevToolsExtension
+    private devTools: DevToolsExtension,
+    @Inject(RootReducer) private rootReducer: IReducer
   ) {
     this.setupStore();
   }
@@ -96,7 +98,7 @@ class MainModule {
       }
     }
 
-    this.store.configureStore(rootReducer, initialState, middleware, enhancers);
+    this.store.configureStore(this.rootReducer, initialState, middleware, enhancers);
   }
 
 }
