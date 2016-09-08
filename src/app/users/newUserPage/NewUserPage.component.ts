@@ -6,8 +6,8 @@ import { Subscription } from 'rxjs/Subscription';
 import { NgRedux, select } from 'ng2-redux';
 import { Map } from 'immutable';
 
-import { ContainerComponent } from '../../base/component/ContainerComponent';
-import { UsersActions } from '../../backend/users/Users.actions';
+import { ContainerComponent } from '../../shared/component/ContainerComponent';
+import { UsersActions } from '../backend/Users.actions';
 
 
 @Component({

@@ -1,12 +1,14 @@
 import { Routes } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import * as configureStore from 'redux-mock-store';
+import configureStore from 'redux-mock-store';
 import { fromJS } from 'immutable';
 
-import { observableMiddleware } from '../base/middleware';
+import { observableMiddleware } from '../shared/middleware';
 
 // demo for tslint - give it an error to display
 const foo: number = 42;
+
+console.log(configureStore, 'ehjuk');
 
 const middlewares = [observableMiddleware];
 export const createMockStore: Function = configureStore(middlewares);

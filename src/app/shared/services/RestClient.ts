@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response, RequestOptions, RequestMethod } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
-import settings from '../settings';
+import settings from '../../settings';
 
 function extractResponseData(response: Response): any {
   return response.json();

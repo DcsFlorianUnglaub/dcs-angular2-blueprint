@@ -4,10 +4,10 @@ import { NgRedux, select } from 'ng2-redux';
 import { Observable } from 'rxjs/Observable';
 import { List, Map } from 'immutable';
 
-import { IState } from '../../base/interfaces';
-import { ContainerComponent } from '../../base/component/ContainerComponent';
-import { MealsActions } from '../../backend/meals/Meals.actions';
-import { totalPrice, orderSize } from '../../backend/meals/Meals.selectors';
+import { IState } from '../../shared/interfaces';
+import { ContainerComponent } from '../../shared/component/ContainerComponent';
+import { MealsActions } from '../backend/Meals.actions';
+import { totalPrice, orderSize } from '../backend/Meals.selectors';
 
 
 @Component({

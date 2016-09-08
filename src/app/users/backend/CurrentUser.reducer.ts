@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
 
-import { IState, IAction, IReducer } from '../../base/interfaces';
+import { IState, IAction, IReducer } from '../../shared/interfaces';
 import { createReducer } from '../../utils/reducer';
 import { USER_FETCH_START, USER_FETCH_NEXT, USER_FETCH_ERROR,
   USER_SAVE_START, USER_SAVE_NEXT, USER_SAVE_ERROR } from './Users.actions';

@@ -1,4 +1,4 @@
-import './restClient';
+import './services/RestClient';
 
 describe('the testsuite', () => {
   it('runs', () => {

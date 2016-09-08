@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { List } from 'immutable';
 
-import { PresentationalComponent } from '../../base/component/PresentationalComponent';
+import { PresentationalComponent } from '../../shared/component/PresentationalComponent';
 
 
 @Component({

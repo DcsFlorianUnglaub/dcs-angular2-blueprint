@@ -1,5 +1,5 @@
 import { Map } from 'immutable';
-import { IState } from '../../base/interfaces';
+import { IState } from '../../shared/interfaces';
 import { currentUserReducer, currentUserInitialState } from './CurrentUser.reducer';
 
 describe('CurrentUser.reducer', () => {

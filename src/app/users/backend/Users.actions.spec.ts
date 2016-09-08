@@ -2,8 +2,8 @@ import { inject, TestBed, async } from '@angular/core/testing';
 import { Observable } from 'rxjs/Observable';
 
 import { FakeRestClient, createMockStore } from '../../utils/testing';
-import { IAction } from '../../base/interfaces';
-import { RestClient } from '../../base/restClient';
+import { IAction } from '../../shared/interfaces';
+import { RestClient } from '../../shared/services/RestClient';
 import { UsersActions } from './Users.actions';
 
 

@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { NgRedux, select } from 'ng2-redux';
 import { Observable } from 'rxjs/Observable';
 
-import { ContainerComponent } from '../../base/component/ContainerComponent';
-import { UsersActions } from '../../backend/users/Users.actions';
+import { ContainerComponent } from '../../shared/component/ContainerComponent';
+import { UsersActions } from '../backend/Users.actions';
 
 
 @Component({

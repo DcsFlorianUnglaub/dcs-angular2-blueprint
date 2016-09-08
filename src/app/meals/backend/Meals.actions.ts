@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { Map } from 'immutable';
 
 import { IAction } from '../../base/interfaces';
-import { RestClient } from '../../base/restClient';
+import { RestClient } from '../../shared/services/RestClient';
 
 
 export const MEALS_FETCH: string = 'MEALS_FETCH';

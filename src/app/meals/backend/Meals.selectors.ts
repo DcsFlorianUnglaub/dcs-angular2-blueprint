@@ -1,4 +1,4 @@
-import { IState } from '../../base/interfaces';
+import { IState } from '../../shared/interfaces';
 
 
 export function totalPrice(state: IState): number {

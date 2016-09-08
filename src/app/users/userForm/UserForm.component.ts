@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { fromJS } from 'immutable';
 
 import { validateEmail, validatePhone, validateFQDN } from '../../utils/validators';
-import { PresentationalComponent } from '../../base/component/PresentationalComponent';
+import { PresentationalComponent } from '../../shared/component/PresentationalComponent';
 
 
 @Component({

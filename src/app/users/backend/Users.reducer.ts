@@ -1,7 +1,7 @@
 import { USERS_FETCH_START, USERS_FETCH_NEXT, USERS_FETCH_ERROR, USER_SAVE_NEXT, USER_DELETE_NEXT } from './Users.actions';
 import { fromJS } from 'immutable';
 
-import { IState, IAction } from '../../base/interfaces';
+import { IState, IAction } from '../../shared/interfaces';
 
 
 const usersInitialState: IState = fromJS({

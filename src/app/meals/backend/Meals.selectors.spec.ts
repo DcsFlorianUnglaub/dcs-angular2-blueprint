@@ -1,7 +1,7 @@
 import { fromJS, Map } from 'immutable';
 
 import { totalPrice } from './Meals.selectors';
-import { IState } from '../../base/interfaces';
+import { IState } from '../../shared/interfaces';
 
 
 describe('Meals selectors', () => {

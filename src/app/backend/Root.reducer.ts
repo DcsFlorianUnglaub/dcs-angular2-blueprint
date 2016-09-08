@@ -2,9 +2,9 @@ import { OpaqueToken } from '@angular/core';
 import { combineReducers } from 'redux-immutable';
 
 import { IReducer } from '../base/interfaces';
-import { usersReducer } from './users/Users.reducer';
-import { currentUserReducer } from './users/CurrentUser.reducer';
-import { mealsReducer } from './meals/Meals.reducer';
+import { usersReducer } from '../users/backend/Users.reducer';
+import { currentUserReducer } from '../users/backend/CurrentUser.reducer';
+import { mealsReducer } from '../meals/backend/Meals.reducer';
 
 
 export const RootReducer: OpaqueToken = new OpaqueToken('RootReducer');

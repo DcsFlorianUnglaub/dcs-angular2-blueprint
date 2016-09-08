@@ -18,9 +18,9 @@ interface IConfigureStore {
 
 declare var configureStore: IConfigureStore;
 
-declare module 'redux-mock-store' {
-  export = configureStore;
-}
+// declare module 'redux-mock-store' {
+//   export = configureStore;
+// }
 
 declare module jasmine {
     interface Matchers {

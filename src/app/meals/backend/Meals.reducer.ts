@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
 
-import { IAction, IReducer, IState } from '../../base/interfaces';
+import { IAction, IReducer, IState } from '../../shared/interfaces';
 import { createReducer } from '../../utils/reducer';
 import {
   MEALS_FETCH_START, MEALS_FETCH_NEXT, MEALS_FETCH_ERROR,

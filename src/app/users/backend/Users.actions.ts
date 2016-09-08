@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Map } from 'immutable';
 
-import { RestClient } from '../../base/restClient';
-import { IAction } from '../../base/interfaces';
+import { IAction } from '../../shared/interfaces';
+import { RestClient } from '../../shared/services/RestClient';
 
 
 export const USERS_FETCH: string = 'USERS_FETCH';

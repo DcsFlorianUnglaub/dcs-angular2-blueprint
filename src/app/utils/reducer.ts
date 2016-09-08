@@ -1,4 +1,4 @@
-import { IAction, IReducer, IState } from '../base/interfaces';
+import { IAction, IReducer, IState } from '../shared/interfaces';
 
 export function createReducer(initialState: IState, handlers: {[key: string]: IReducer}) {
   return function reducer(state: IState = initialState, action?: IAction): IState {

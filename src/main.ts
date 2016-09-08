@@ -1,19 +1,17 @@
 import { NgModule, ApplicationRef, enableProdMode, Inject, NgZone } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { RouterModule } from '@angular/router';
-import { BrowserModule } from '@angular/platform-browser';
 import { removeNgStyles, createNewHosts, bootloader } from '@angularclass/hmr';
-import { NgRedux, DevToolsExtension } from 'ng2-redux';
+import { NgReduxModule, NgRedux, DevToolsExtension } from 'ng2-redux';
 import { fromJS, Map } from 'immutable';
 import { Subject } from 'rxjs/Subject';
 
 import { AppComponent } from './app/App.component';
 import { AppModule } from './app/App.module';
-import { IReducer, IState } from './app/base/interfaces';
-import { loggerMiddleware, observableMiddleware, tickEnhancer } from './app/base/middleware';
+import { IReducer, IState } from './app/shared/interfaces';
+import { loggerMiddleware, observableMiddleware, tickEnhancer } from './app/shared/middleware';
 import { rootReducer, RootReducer } from './app/backend/Root.reducer';
-import { SetupCompleted, getSetupCompletedTimer } from './app/base/timers';
-import { SetupCompletedGuard } from './app/base/guards/SetupCompleted.guard';
+import { SetupCompletedGuard, SetupCompleted, getSetupCompletedTimer } from './app/shared/guards/SetupCompleted.guard';
 
 if (module.hot && ENV === 'development') {
   console.clear();
@@ -32,14 +30,12 @@ console.time('bootstrap');
     RouterModule.forRoot([], {
       useHash: true
     }),
-    BrowserModule,
     // app
-    AppModule
+    AppModule,
     // vendors
+    NgReduxModule
   ],
   providers: [
-    NgRedux,
-    DevToolsExtension,
     { provide: RootReducer, useValue: rootReducer },
     { provide: SetupCompleted, useValue: getSetupCompletedTimer() },
     SetupCompletedGuard

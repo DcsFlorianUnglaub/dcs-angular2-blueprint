@@ -1,8 +1,13 @@
-import { Inject, Injectable } from '@angular/core';
+import { Inject, Injectable, OpaqueToken } from '@angular/core';
 import { CanActivate } from '@angular/router';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
-import { SetupCompleted } from '../timers';
+
+export const SetupCompleted: OpaqueToken = new OpaqueToken('SetupCompleted');
+
+export function getSetupCompletedTimer(): BehaviorSubject<boolean> {
+  return new BehaviorSubject(false);
+}
 
 @Injectable()
 export class SetupCompletedGuard implements CanActivate {
@@ -18,3 +23,4 @@ export class SetupCompletedGuard implements CanActivate {
   }
 
 }
+
