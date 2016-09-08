@@ -26,6 +26,8 @@ import { RestClient } from './base/restClient';
 import { UsersActions } from './backend/users/Users.actions';
 import { MealsActions } from './backend/meals/Meals.actions';
 
+import { CompanyModule } from './company/Company.module';
+
 
 @NgModule({
   declarations: [
@@ -50,7 +52,8 @@ import { MealsActions } from './backend/meals/Meals.actions';
     RouterModule.forRoot(routes),
     FormsModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
+    CompanyModule
   ],
   providers: [
     NgRedux,
