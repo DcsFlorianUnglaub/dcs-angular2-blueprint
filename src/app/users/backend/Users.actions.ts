@@ -34,7 +34,10 @@ export class UsersActions {
   fetch(): IAction {
     return {
       type: USERS_FETCH,
-      payload: this.restClient.get('users')
+      payload: this.restClient.get('users'),
+      meta: {
+        dispatchCompleted: true
+      }
     };
   }
 

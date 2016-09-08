@@ -41,8 +41,7 @@ describe('UsersActions', () => {
 
       expect(actions).toEqual([
         { type: 'USER_FETCH_START', meta: undefined },
-        { type: 'USER_FETCH_NEXT', payload: 'fake payload' },
-        { type: 'USER_FETCH_COMPLETED' },
+        { type: 'USER_FETCH_NEXT', payload: 'fake payload' }
       ]);
 
     });

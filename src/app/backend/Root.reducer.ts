@@ -1,7 +1,7 @@
 import { OpaqueToken } from '@angular/core';
 import { combineReducers } from 'redux-immutable';
 
-import { IReducer } from '../base/interfaces';
+import { IReducer } from '../shared/interfaces';
 import { usersReducer } from '../users/backend/Users.reducer';
 import { currentUserReducer } from '../users/backend/CurrentUser.reducer';
 import { mealsReducer } from '../meals/backend/Meals.reducer';

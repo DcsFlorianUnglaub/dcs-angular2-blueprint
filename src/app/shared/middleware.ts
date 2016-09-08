@@ -25,7 +25,11 @@ export const observableMiddleware: any = store => next => action => {
     obs.subscribe(
       (data: any) => store.dispatch({ type: `${baseType}_NEXT`, payload: data }),
       (error: Response) => store.dispatch({ type: `${baseType}_ERROR`, payload: error }),
-      () => store.dispatch({ type: `${baseType}_COMPLETED` })
+      () => {
+        if (action.meta && action.meta.dispatchCompleted) {
+          store.dispatch({ type: `${baseType}_COMPLETED` });
+        }
+      }
     );
 
   } else {

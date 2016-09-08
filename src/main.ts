@@ -1,12 +1,12 @@
 import { NgModule, ApplicationRef, enableProdMode, Inject, NgZone } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, bootloader } from '@angularclass/hmr';
 import { NgReduxModule, NgRedux, DevToolsExtension } from 'ng2-redux';
 import { fromJS, Map } from 'immutable';
 import { Subject } from 'rxjs/Subject';
 
 import { AppComponent } from './app/App.component';
+import { SharedModule } from './app/shared/Shared.module';
 import { AppModule } from './app/App.module';
 import { IReducer, IState } from './app/shared/interfaces';
 import { loggerMiddleware, observableMiddleware, tickEnhancer } from './app/shared/middleware';
@@ -26,11 +26,8 @@ console.time('bootstrap');
     AppComponent
   ],
   imports: [
-    // Angular 2
-    RouterModule.forRoot([], {
-      useHash: true
-    }),
     // app
+    SharedModule,
     AppModule,
     // vendors
     NgReduxModule

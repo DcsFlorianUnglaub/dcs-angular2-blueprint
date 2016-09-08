@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Map } from 'immutable';
 
-import { IAction } from '../../base/interfaces';
+import { IAction } from '../../shared/interfaces';
 import { RestClient } from '../../shared/services/RestClient';
 
 

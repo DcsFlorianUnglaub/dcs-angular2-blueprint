@@ -22,17 +22,17 @@ exports.config = {
   },
   directConnect: true,
 
-  capabilities: {
-    'browserName': 'chrome',
-    'chromeOptions': {
-    }
-  },
+  // capabilities: {
+  //   'browserName': 'chrome',
+  //   'chromeOptions': {
+  //   }
+  // },
 
-  // multiCapabilities: [{
-  //   'browserName': 'chrome'
-  // }, {
-  //   'browserName': 'firefox'
-  // }],
+  multiCapabilities: [{
+    'browserName': 'chrome'
+  }, {
+    'browserName': 'firefox'
+  }],
 
   onPrepare: function () {
     browser.ignoreSynchronization = true;

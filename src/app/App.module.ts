@@ -19,7 +19,9 @@ import { CompanyModule } from './company/Company.module';
     NotFoundComponent,
   ],
   imports: [
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, {
+      useHash: true
+    }),
     SharedModule,
     UsersModule,
     MealsModule,

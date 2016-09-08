@@ -22,7 +22,7 @@ declare var configureStore: IConfigureStore;
 //   export = configureStore;
 // }
 
-declare module jasmine {
+declare namespace jasmine {
     interface Matchers {
         toEqualImmutable(expected: any): void;
     }
