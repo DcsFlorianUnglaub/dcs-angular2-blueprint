@@ -1,17 +1,23 @@
-import { NgModule, ApplicationRef, enableProdMode, Inject } from '@angular/core';
+import { NgModule, ApplicationRef, enableProdMode, Inject, NgZone } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { RouterModule } from '@angular/router';
+import { BrowserModule } from '@angular/platform-browser';
 import { removeNgStyles, createNewHosts, bootloader } from '@angularclass/hmr';
 import { NgRedux, DevToolsExtension } from 'ng2-redux';
 import { fromJS, Map } from 'immutable';
+import { Subject } from 'rxjs/Subject';
 
 import { AppComponent } from './app/App.component';
 import { AppModule } from './app/App.module';
 import { IReducer, IState } from './app/base/interfaces';
-import { loggerMiddleware, observableMiddleware } from './app/base/middleware';
+import { loggerMiddleware, observableMiddleware, tickEnhancer } from './app/base/middleware';
 import { rootReducer, RootReducer } from './app/backend/Root.reducer';
+import { SetupCompleted, getSetupCompletedTimer } from './app/base/timers';
+import { SetupCompletedGuard } from './app/base/guards/SetupCompleted.guard';
 
-
+if (module.hot && ENV === 'development') {
+  console.clear();
+}
 console.time('bootstrap');
 
 @NgModule({
@@ -26,6 +32,7 @@ console.time('bootstrap');
     RouterModule.forRoot([], {
       useHash: true
     }),
+    BrowserModule,
     // app
     AppModule
     // vendors
@@ -33,26 +40,27 @@ console.time('bootstrap');
   providers: [
     NgRedux,
     DevToolsExtension,
-    { provide: RootReducer, useValue: rootReducer }
+    { provide: RootReducer, useValue: rootReducer },
+    { provide: SetupCompleted, useValue: getSetupCompletedTimer() },
+    SetupCompletedGuard
   ]
 })
 class MainModule {
-    constructor(
+  constructor(
     private appRef: ApplicationRef,
     private store: NgRedux<IState>,
     private devTools: DevToolsExtension,
-    @Inject(RootReducer) private rootReducer: IReducer
+    private zone: NgZone,
+    @Inject(RootReducer) private rootReducer: IReducer,
+    @Inject(SetupCompleted) private setupCompleted$: Subject<boolean>
   ) {
-    this.setupStore();
+    if (!module.hot) {
+      this.setupStore();
+    }
   }
 
   hmrOnInit(hmrStore) {
-    if (hmrStore) {
-      this.store.dispatch({
-        type: 'HMR_RESET_STATE',
-        payload: hmrStore.appState || Map({})
-      });
-    }
+    this.setupStore(hmrStore);
   }
 
   hmrOnDestroy(hmrStore) {
@@ -72,25 +80,32 @@ class MainModule {
     delete hmrStore.disposeOldHosts;
   }
 
-  protected setupStore(): void {
+  protected setupStore(hmrStore?): void {
     let middleware: Array<any> = [observableMiddleware];
-    let enhancers: Array<any> = [];
+    let enhancers: Array<any> = [tickEnhancer(this.zone)];
     let initialState = Map({});
     let tickTimeoutId: any;
 
     if (ENV === 'development') {
       middleware = [...middleware, loggerMiddleware];
 
+      // if present, fetch initial state from HMR
+      if (hmrStore && hmrStore.appState) {
+        initialState = hmrStore.appState;
+      }
+
+      // configure devtools if installed in Chrome
       if (this.devTools.isEnabled()) {
         // disconnect previous devtools instance, no history walking in dev tools otherwise
         window['devToolsExtension'].disconnect();
         enhancers = [...enhancers, this.devTools.enhancer({
           deserializeState: ((state: IState) => {
-
+            // this is for loading the state via devtols from a JSON dump
             clearTimeout(tickTimeoutId);
             tickTimeoutId = setTimeout(() => {
               console.log('State restored, calling change detection.');
-              this.appRef.tick();
+              // fire change detection
+              this.zone.run(() => { });
             }, 100);
             return fromJS(state);
           })
@@ -99,6 +114,9 @@ class MainModule {
     }
 
     this.store.configureStore(this.rootReducer, initialState, middleware, enhancers);
+    this.setupCompleted$.next(true);
+    // fire change detection
+    this.zone.run(() => { });
   }
 
 }

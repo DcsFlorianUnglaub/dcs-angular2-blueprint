@@ -29,13 +29,13 @@ export class MealsPageComponent extends ContainerComponent implements OnInit {
 
   constructor(private store: NgRedux<IState>, private actions: MealsActions) {
     super();
-  }
 
-  ngOnInit(): void {
     if (this.store.getState().getIn(['meals', 'entities']).size === 0) {
       this.store.dispatch(this.actions.fetch());
     }
+  }
 
+  ngOnInit(): void {
     // this is why we need to unsubscribe when the Component is destroyed
     // navigate multiple times between "Users" and "Order Meals" and then do search
     // we call this "event leak" based on the term "memory leak"

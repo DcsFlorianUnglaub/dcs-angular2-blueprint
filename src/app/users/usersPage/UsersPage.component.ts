@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { NgRedux, select } from 'ng2-redux';
-import { Map } from 'immutable';
+import { Observable } from 'rxjs/Observable';
 
 import { ContainerComponent } from '../../base/component/ContainerComponent';
 import { UsersActions } from '../../backend/users/Users.actions';
@@ -11,18 +10,16 @@ import { UsersActions } from '../../backend/users/Users.actions';
   selector: 'dcs-users-page',
   templateUrl: './UsersPage.tpl.html'
 })
-export class UsersPageComponent extends ContainerComponent implements OnInit {
+export class UsersPageComponent extends ContainerComponent {
 
-  @select(['users']) state$: any;
-  @select(['users', 'entities']) users$: any;
-  @select(['users', 'loading']) loading$: any;
-  @select(['users', 'error']) error$: any;
+  @select(['users']) state$: Observable<any>;
+  @select(['users', 'entities']) users$: Observable<any>;
+  @select(['users', 'loading']) loading$: Observable<any>;
+  @select(['users', 'error']) error$: Observable<any>;
 
   constructor(private store: NgRedux<any>, private usersActions: UsersActions) {
     super();
-  }
 
-  ngOnInit(): void {
     this.state$
       .first()
       .subscribe(state => {
@@ -30,10 +27,6 @@ export class UsersPageComponent extends ContainerComponent implements OnInit {
           this.store.dispatch(this.usersActions.fetch());
         }
       });
-  }
-
-  identify(index: number, item: Map<string, any>): number {
-    return item.hashCode();
   }
 
   deleteUser(user: any) {

@@ -1,22 +1,13 @@
+import { NgZone } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Subscription } from 'rxjs/Subscription';
 import { Response } from '@angular/http';
 import * as createLogger from 'redux-logger';
 
 import { IState } from './interfaces';
 
 
-let subscriptions: Array<Subscription> = [];
-
+// Middleware to automatically dispatch async actions when getting an Observable as payload
 export const observableMiddleware: any = store => next => action => {
-  // get rid of all subscriptions that are closed anyway, no need to unsubscribe there
-  subscriptions = subscriptions.filter(sub => !sub.closed);
-
-  if (action.type === 'HMR_RESET_STATE') {
-    // cancel all async actions on state reset via HMR
-    subscriptions.forEach(sub => sub.unsubscribe());
-  }
-
   if (action.payload instanceof Observable) {
     let baseType: string = action.type;
     let obs: Observable<any> = action.payload;
@@ -31,17 +22,38 @@ export const observableMiddleware: any = store => next => action => {
       meta: action.meta
     });
 
-    subscriptions.push(obs.subscribe(
+    obs.subscribe(
       (data: any) => store.dispatch({ type: `${baseType}_NEXT`, payload: data }),
       (error: Response) => store.dispatch({ type: `${baseType}_ERROR`, payload: error }),
       () => store.dispatch({ type: `${baseType}_COMPLETED` })
-    ));
+    );
 
   } else {
     return next(action);
   }
 };
 
+// configure logger middleware to work with immutables
 export const loggerMiddleware: any = createLogger({
   stateTransformer: (state: IState) => state.toJS()
 });
+
+
+/**
+ * Store enhancer to ensure that after a state change there always is a angular2 tick to ensure change detection
+ *
+ * @param {NgZone} zone
+ * @returns any
+ */
+export function tickEnhancer(zone:  NgZone) {
+  return next => (reducer, initialState, enhancer) => {
+    let store = next(reducer, initialState, enhancer);
+
+    store.subscribe(() => {
+      // fire change detection
+      zone.run(() => { });
+    });
+
+    return store;
+  };
+}

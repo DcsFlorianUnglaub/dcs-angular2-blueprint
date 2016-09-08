@@ -9,16 +9,8 @@ import { mealsReducer } from './meals/Meals.reducer';
 
 export const RootReducer: OpaqueToken = new OpaqueToken('RootReducer');
 
-const appReducer = combineReducers({
+export const rootReducer: IReducer = combineReducers({
   users: usersReducer,
   currentUser: currentUserReducer,
   meals: mealsReducer
 });
-
-export const rootReducer: IReducer = function(state, action) {
-  if (action.type === 'HMR_RESET_STATE') {
-    state = action.payload;
-  }
-
-  return appReducer(state, action);
-};

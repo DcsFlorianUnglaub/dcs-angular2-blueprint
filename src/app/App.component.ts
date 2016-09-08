@@ -1,5 +1,5 @@
-import { Component, ViewEncapsulation } from '@angular/core';
-import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
+import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'dcs-app',
