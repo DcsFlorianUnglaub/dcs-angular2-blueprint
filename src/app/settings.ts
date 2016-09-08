@@ -1,8 +1,17 @@
-let settings: any;
+import { OpaqueToken } from '@angular/core';
+
+
+export interface ISettings {
+  apiUrl: string;
+}
+
+export const APP_SETTINGS: OpaqueToken = new OpaqueToken('APP_SETTINGS');
+
+
+let settings: ISettings;
 
 // little hack to allow overriding of settings on production machines
 // just add the settings to window
-/* tslint:disable */
 if (window['settings']) {
   settings = window['settings'];
 } else {
@@ -11,4 +20,5 @@ if (window['settings']) {
   };
 }
 
+export { settings };
 export default settings;

@@ -6,7 +6,7 @@ import { fromJS } from 'immutable';
 import { observableMiddleware } from '../shared/middleware';
 
 // demo for tslint - give it an error to display
-const foo: number = 42;
+// const foo: number = 42;
 
 const middlewares = [observableMiddleware];
 export const createMockStore: Function = configureStore(middlewares);

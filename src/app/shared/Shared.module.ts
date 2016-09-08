@@ -8,7 +8,7 @@ import { NgReduxModule } from 'ng2-redux';
 import { PricePipe } from './pipes/Price.pipe';
 import { FormBlockComponent } from './components/formBlock/FormBlock.component';
 import { RestClient } from './services/RestClient';
-
+import { APP_SETTINGS, settings } from '../settings';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,8 @@ import { RestClient } from './services/RestClient';
     FormBlockComponent
   ],
   providers: [
-    RestClient
+    RestClient,
+    { provide: APP_SETTINGS, useValue: settings }
   ],
   imports: [
     BrowserModule,
@@ -36,7 +37,6 @@ import { RestClient } from './services/RestClient';
     // Shared app stuff
     PricePipe,
     FormBlockComponent,
-    // RestClient
   ]
 })
 export class SharedModule { }

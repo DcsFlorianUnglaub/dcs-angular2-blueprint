@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Http, Response, RequestOptions, RequestMethod } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
-import settings from '../../settings';
+import { APP_SETTINGS, ISettings } from '../../settings';
 
 function extractResponseData(response: Response): any {
   return response.json();
@@ -11,11 +11,10 @@ function extractResponseData(response: Response): any {
 @Injectable()
 export class RestClient {
 
-  settings: any;
-
-  constructor(private http: Http) {
-    this.settings = settings;
-  }
+  constructor(
+    private http: Http,
+    @Inject(APP_SETTINGS) private settings: ISettings
+  ) { }
 
   get(path: string, options: any = {}): Observable<any> {
     let requestOptions = new RequestOptions({

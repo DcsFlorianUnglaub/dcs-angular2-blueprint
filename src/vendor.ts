@@ -24,6 +24,8 @@ import 'rxjs/add/observable/of';
 import '@angularclass/hmr';
 import 'immutable';
 import 'ng2-redux';
+import * as numeral from 'numeral';
+
 import 'redux';
 import 'redux-immutable';
 import 'redux-logger';
@@ -34,3 +36,26 @@ if ('production' === ENV) {
 } else {
   // Development
 }
+
+// numeral config
+numeral.language('de', {
+    delimiters: {
+        thousands: '.',
+        decimal: ','
+    },
+    abbreviations: {
+        thousand: 'k',
+        million: 'm',
+        billion: 'b',
+        trillion: 't'
+    },
+    currency: {
+        symbol: '€'
+    },
+    ordinal : function (num) {
+        return '.';
+    },
+});
+
+// switch between languages
+numeral.language('de');
