@@ -15,7 +15,9 @@ export class UserFormComponent extends PresentationalComponent implements OnChan
   @Input() currentUser;
   @Input() loading;
   @Input() saving;
-  @Output() triggerSave = new EventEmitter();
+  @Output() triggerSave: EventEmitter<any> = new EventEmitter();
+  @Output() updateFormData: EventEmitter<any> = new EventEmitter();
+  @Output() onCancel: EventEmitter<any> = new EventEmitter();
 
   userForm: FormGroup;
 
@@ -42,6 +44,18 @@ export class UserFormComponent extends PresentationalComponent implements OnChan
         bs: ['']
       })
     });
+
+    this.userForm
+      .valueChanges
+      .debounceTime(500)
+      .map(data => fromJS(data))
+      .distinctUntilChanged((oldData, newData): boolean => newData.equals(oldData))
+      .subscribe(data => {
+        this.updateFormData.next({
+          formData: data,
+          dirty: this.userForm.dirty
+        });
+      });
   }
 
   ngOnChanges(changes) {
@@ -52,7 +66,7 @@ export class UserFormComponent extends PresentationalComponent implements OnChan
 
   saveUser() {
     let user: any = this.currentUser.merge(fromJS(this.userForm.value));
-    if (this.userForm.valid && (!user.equals(this.currentUser))) {
+    if (this.userForm.valid && this.userForm.dirty) {
       this.triggerSave.next(user);
     }
   }

@@ -25,6 +25,9 @@ export const USER_DELETE: string = 'USER_DELETE';
 export const USER_DELETE_NEXT: string = 'USER_DELETE_NEXT';
 export const USER_DELETE_ERROR: string = 'USER_DELETE_ERROR';
 
+export const USER_UPDATE_FORM_DATA: string = 'USER_UPDATE_FORM_DATA';
+export const USER_RESET_FORM_DATA: string = 'USER_RESET_FORM_DATA';
+
 
 @Injectable()
 export class UsersActions {
@@ -45,6 +48,19 @@ export class UsersActions {
     return {
       type: USER_FETCH,
       payload: this.restClient.get(`users/${id}`)
+    };
+  }
+
+  updateFormData(formData: Map<string, any>, dirty: boolean): IAction {
+    return {
+      type: USER_UPDATE_FORM_DATA,
+      payload: { formData, dirty }
+    };
+  }
+
+  resetFormData(): IAction {
+    return {
+      type: USER_RESET_FORM_DATA
     };
   }
 

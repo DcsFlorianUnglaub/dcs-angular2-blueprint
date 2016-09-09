@@ -1,6 +1,4 @@
 <div *ngIf="currentUser">
-  <h1 *ngIf="currentUser.get('name')">Edit User {{ currentUser.get('name') }}</h1>
-  <h1 *ngIf="!currentUser.get('name')">Add New User</h1>
 
   <form class="form-horizontal" [formGroup]="userForm">
 

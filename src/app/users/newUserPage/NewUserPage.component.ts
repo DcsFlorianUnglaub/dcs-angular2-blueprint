@@ -17,6 +17,8 @@ import { UsersActions } from '../backend/Users.actions';
 export class NewUserPageComponent extends ContainerComponent {
 
   @select(['currentUser', 'saving']) saving$: Observable<boolean>;
+  @select(['currentUser', 'formData']) formData$: Observable<any>;
+
 
   currentUser: Map<string, any> = Map<string, any>();
 
@@ -40,6 +42,10 @@ export class NewUserPageComponent extends ContainerComponent {
       });
 
     this.subscriptions.push(subscription);
+  }
+
+  updateFormData({ formData, dirty }: { formData: any, dirty: boolean }): void {
+    this.store.dispatch(this.usersActions.updateFormData(formData, dirty));
   }
 
 }

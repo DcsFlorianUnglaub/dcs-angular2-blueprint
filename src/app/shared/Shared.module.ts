@@ -9,6 +9,8 @@ import { PricePipe } from './pipes/Price.pipe';
 import { FormBlockComponent } from './components/formBlock/FormBlock.component';
 import { RestClient } from './services/RestClient';
 import { APP_SETTINGS, settings } from '../settings';
+import { CancelEditGuard } from './guards/CancelEdit.guard';
+
 
 @NgModule({
   declarations: [
@@ -17,6 +19,7 @@ import { APP_SETTINGS, settings } from '../settings';
   ],
   providers: [
     RestClient,
+    CancelEditGuard,
     { provide: APP_SETTINGS, useValue: settings }
   ],
   imports: [
@@ -36,7 +39,7 @@ import { APP_SETTINGS, settings } from '../settings';
     NgReduxModule,
     // Shared app stuff
     PricePipe,
-    FormBlockComponent,
+    FormBlockComponent
   ]
 })
 export class SharedModule { }

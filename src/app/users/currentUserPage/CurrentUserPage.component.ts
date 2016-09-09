@@ -17,6 +17,7 @@ import { UsersActions } from '../backend/Users.actions';
 export class CurrentUserPageComponent extends ContainerComponent implements OnInit {
 
   @select(['currentUser', 'entity']) currentUser$: Observable<any>;
+  @select(['currentUser', 'formData']) formData$: Observable<any>;
   @select(['currentUser', 'loading']) loading$: Observable<boolean>;
   @select(['currentUser', 'error']) error$: Observable<any>;
   @select(['currentUser', 'saving']) saving$: Observable<boolean>;
@@ -39,14 +40,16 @@ export class CurrentUserPageComponent extends ContainerComponent implements OnIn
 
     this.subscriptions.push(this.route.params.subscribe(params => {
       let id: number = Number(params['id']);
-
-      if ((!this.currentUser) || this.currentUser.get('id') !== id) {
-        this.store.dispatch(this.usersActions.fetchOne(id));
-      }
+      this.store.dispatch(this.usersActions.fetchOne(id));
     }));
   }
 
+  updateFormData({ formData, dirty }: { formData: any, dirty: boolean }): void {
+    this.store.dispatch(this.usersActions.updateFormData(formData, dirty));
+  }
+
   saveUser(user: any): void {
+    user = this.currentUser.merge(user);
     this.store.dispatch(this.usersActions.save(user));
 
     let subscription: Subscription = this.saving$

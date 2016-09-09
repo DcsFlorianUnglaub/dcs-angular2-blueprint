@@ -1,11 +1,15 @@
 <div class="row">
   <div class="col-sm-12">
 
+    <h1>Edit User {{ currentUser && currentUser.get('name') }}</h1>
+
+
     <dcs-user-form
-      [currentUser]="currentUser$ | async"
+      [currentUser]="formData$ | async"
       [loading]="loading$ | async"
       [saving]="saving$ | async"
       (triggerSave)="saveUser($event)"
+      (updateFormData)="updateFormData($event)"
     ></dcs-user-form>
 
     <div *ngIf="error$ | async">
