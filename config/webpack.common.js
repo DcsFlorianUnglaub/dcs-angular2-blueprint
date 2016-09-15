@@ -41,7 +41,7 @@ module.exports = {
           'awesome-typescript',
           'angular2-template',
           '@angularclass/hmr-loader'
-          ],
+        ],
         exclude: [
           /\.(spec|e2e)\.ts$/
         ]
@@ -95,7 +95,14 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       chunksSortMode: 'dependency'
-    })
+    }),
+
+    // make weird WARNING after upgrading from RC7 to final release go away
+    // https://github.com/AngularClass/angular2-webpack-starter/issues/993
+    new webpack.ContextReplacementPlugin(
+      /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+      __dirname
+    ),
   ]
 
 };
