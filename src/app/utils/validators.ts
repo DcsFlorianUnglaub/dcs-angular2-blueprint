@@ -6,7 +6,7 @@ export function validateEmail(c: FormControl) {
 }
 
 export function validatePhone(c: FormControl) {
-  return validator.isMobilePhone(c.value, 'de-DE') ? null : { validatePhone: { valid: false } };
+  return validator.isMobilePhone(String(c.value), 'de-DE') ? null : { validatePhone: { valid: false } };
 }
 
 export function validateFQDN(c: FormControl) {
