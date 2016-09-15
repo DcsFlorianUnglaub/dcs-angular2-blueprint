@@ -1,0 +1,22 @@
+<div class="row">
+  <div *ngIf="note$ | async">
+    <dcs-note-preview
+      [note]="note$ | async"
+    ></dcs-note-preview>
+
+    <div class="col-sm-6">
+      <a routerLink="/notes/{{ note$ | dcsAsyncImmutable: 'id' }}/edit">Edit note</a>
+    </div>
+
+    <div class="col-sm-6">
+      <a (click)="delete()">Delete note</a>
+    </div>
+  </div>
+
+  <div *ngIf="error$ | async" class="col-sm-12">
+    <p class="error">An API error occurred:</p>
+    <pre>
+      {{ error$ | async | json }}
+    </pre>
+  </div>
+</div>

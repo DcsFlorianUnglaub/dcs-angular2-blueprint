@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-sm-12">
+
+    <h1>Your notes</h1>
+
+    <dcs-notes-list
+      [notes]="notes$ | async"
+      [loading]="loading$ | async"
+      [error]="error$ | async"
+      (triggerDeleteNote)="deleteNote($event)"
+    ></dcs-notes-list>
+  </div>
+
+  <div class="col-sm-6">
+    <a routerLink="/notes/new">Add a new note</a>
+  </div>
+  <div class="col-sm-6">
+    <a (click)="clearAllNotes()">Clear all notes</a>
+  </div>
+
+  <div *ngIf="error$ | async" class="col-sm-12">
+    <p class="error">An API error occurred:</p>
+    <pre>
+      {{ error$ | async | json }}
+    </pre>
+  </div>
+</div>

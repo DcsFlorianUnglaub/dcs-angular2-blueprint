@@ -36,6 +36,7 @@ export class NewUserPageComponent extends ContainerComponent {
     let subscription: Subscription = this.saving$
       .subscribe((saving: boolean) => {
         if (!saving) {
+          // Ist das nicht redundant mit dem Code in ContainerComponent?
           subscription.unsubscribe();
           this.router.navigate(['/users']);
         }

@@ -1,0 +1,6 @@
+<div class="col-sm-12" *ngIf="note">
+  <h2>{{ note.get('title') }}</h2>
+  <div [innerHTML]="note.get('body') | dcsMarkdown">
+    loading...
+  </div>
+</div>

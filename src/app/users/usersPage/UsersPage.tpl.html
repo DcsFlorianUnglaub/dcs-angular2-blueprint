@@ -4,7 +4,7 @@
     <h1>Listing Users</h1>
 
     <dcs-users-list
-      [users]="users$ | async"
+      [users]="users"
       [loading]="loading$ | async"
       (deleteUser)="deleteUser($event)"
       >

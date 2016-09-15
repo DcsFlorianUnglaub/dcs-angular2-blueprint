@@ -6,6 +6,8 @@ import { HttpModule } from '@angular/http';
 import { NgReduxModule } from 'ng2-redux';
 
 import { PricePipe } from './pipes/Price.pipe';
+import { MarkdownPipe } from './pipes/Markdown.pipe';
+import { AsyncImmutablePipe } from './pipes/AsyncImmutable.pipe';
 import { FormBlockComponent } from './components/formBlock/FormBlock.component';
 import { RestClient } from './services/RestClient';
 import { APP_SETTINGS, settings } from '../settings';
@@ -15,6 +17,8 @@ import { CancelEditGuard } from './guards/CancelEdit.guard';
 @NgModule({
   declarations: [
     PricePipe,
+    MarkdownPipe,
+    AsyncImmutablePipe,
     FormBlockComponent
   ],
   providers: [
@@ -39,6 +43,8 @@ import { CancelEditGuard } from './guards/CancelEdit.guard';
     NgReduxModule,
     // Shared app stuff
     PricePipe,
+    MarkdownPipe,
+    AsyncImmutablePipe,
     FormBlockComponent
   ]
 })

@@ -10,6 +10,7 @@ import { SharedModule } from './shared/Shared.module';
 import { UsersModule } from './users/Users.module';
 import { MealsModule } from './meals/Meals.module';
 import { CompanyModule } from './company/Company.module';
+import { NotesModule } from './notes/Notes.module';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { CompanyModule } from './company/Company.module';
     SharedModule,
     UsersModule,
     MealsModule,
-    CompanyModule
+    CompanyModule,
+    NotesModule
   ]
 })
 export class AppModule { }

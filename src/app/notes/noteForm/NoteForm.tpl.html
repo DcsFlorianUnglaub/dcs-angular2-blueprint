@@ -1,0 +1,50 @@
+<form class="form-horizontal" [formGroup]="noteForm">
+  <fieldset>
+
+    <legend>Note</legend>
+
+    <dcs-form-block [hasError]="hasError(noteForm, 'title')">
+      <label for="inputTitle" class="col-sm-2 control-label">Title</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="inputTitle" placeholder="title" formControlName="title">
+        <span class="help-block" *ngIf="hasError(noteForm, 'title')">Required!</span>
+        <span class="help-block" *ngIf="hasError(noteForm, 'title', 'minlength')">
+          The title must be at least {{ noteForm.controls.title.errors.minlength.requiredLength }} characters long.
+        </span>
+        <span class="help-block" *ngIf="hasError(noteForm, 'title', 'maxlength')">
+          The title must be at most {{ noteForm.controls.title.errors.maxlength.requiredLength }} characters long.
+        </span>
+      </div>
+    </dcs-form-block>
+
+    <dcs-form-block [hasError]="hasError(noteForm, 'body')">
+      <label for="inputBody" class="col-sm-2 control-label">Content</label>
+      <div class="col-sm-10">
+        <textarea class="form-control" id="inputBody" placeholder="Content" formControlName="body"></textarea>
+
+        <span class="help-block" *ngIf="hasError(noteForm, 'body', 'required')">Required!</span>
+        <span class="help-block" *ngIf="hasError(noteForm, 'body', 'minlength')">
+          The content must be at least {{ noteForm.controls.body.errors.minlength.requiredLength }} characters long.
+        </span>
+      </div>
+    </dcs-form-block>
+  </fieldset>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" [disabled]="(!noteForm.valid) || (!noteForm.dirty)" class="btn btn-default" (click)="saveNote()">
+          <span *ngIf="!saving">Save</span>
+          <span *ngIf="saving">Saving ...</span>
+        </button>
+    </div>
+  </div>
+</form>
+
+<div class="row">
+  <dcs-note-preview
+    [note]="note"
+  ></dcs-note-preview>
+</div>
+
+
+

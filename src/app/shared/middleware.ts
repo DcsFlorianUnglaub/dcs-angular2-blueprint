@@ -10,6 +10,7 @@ import { IState } from './interfaces';
 export const observableMiddleware: any = store => next => action => {
   if (action.payload instanceof Observable) {
     let baseType: string = action.type;
+
     let obs: Observable<any> = action.payload;
 
     if (action.meta && action.meta.cancel) {

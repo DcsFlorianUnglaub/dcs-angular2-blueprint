@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-sm-12">
+    <h1>Add a new note</h1>
+
+    <dcs-note-form
+      (triggerSave)="saveNote($event)"
+    ></dcs-note-form>
+
+    <div *ngIf="error$ | async">
+      <h2 class="error">An API error occurred:</h2>
+      <pre>
+        {{ error$ | async | json }}
+      </pre>
+    </div>
+
+  </div>
+</div>

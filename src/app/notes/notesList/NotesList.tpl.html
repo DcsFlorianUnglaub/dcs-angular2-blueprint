@@ -1,0 +1,19 @@
+<table class="table table-bordered table-striped table-hover">
+  <tr>
+    <th>Title</th>
+    <th>Contents</th>
+    <th></th>
+  </tr>
+
+  <tr *ngFor="let note of notes; trackBy: identify">
+    <td><a routerLink="/notes/{{ note.get('id') }}">{{ note.get('title') | slice:0:30 }}...</a></td>
+    <td>{{ note.get('body') | slice:0:30 }}...</td>
+    <td><a (click)="deleteNote(note.get('id'))">delete</a></td>
+  </tr>
+
+  <tr *ngIf="!notesAvailable">
+    <td colspan="3" class="no-users-info">No notes available</td>
+  </tr>
+</table>
+
+<div *ngIf="loading" class="loading-animation">Notes loading ...</div>
