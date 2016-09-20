@@ -40,9 +40,12 @@
   </div>
 </form>
 
+Loading: {{loading}}
+Dirty: {{noteForm.dirty}}
+
 <div class="row">
   <dcs-note-preview
-    [note]="note"
+    [note]="currentNote"
   ></dcs-note-preview>
 </div>
 

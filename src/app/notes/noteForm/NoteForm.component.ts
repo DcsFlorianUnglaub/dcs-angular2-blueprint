@@ -11,11 +11,13 @@ import { PresentationalComponent } from '../../shared/component/PresentationalCo
 })
 export class NoteFormComponent extends PresentationalComponent implements OnChanges {
   @Output() triggerSave: EventEmitter<any> = new EventEmitter();
+  @Output() updateFormData: EventEmitter<any> = new EventEmitter();
+
   @Input() note: Map<string, any>;
   @Input() loading: boolean;
 
   noteForm: FormGroup;
-
+  currentNote: Map<string, any>
   constructor(private fb: FormBuilder) {
     super();
 
@@ -30,7 +32,11 @@ export class NoteFormComponent extends PresentationalComponent implements OnChan
       .map(data => fromJS(data))
       .distinctUntilChanged((oldData, newData): boolean => newData.equals(oldData))
       .subscribe(data => {
-        this.note = data;
+        this.currentNote = data;
+        this.updateFormData.next({
+          formData: data,
+          dirty: this.noteForm.dirty
+        });
       });
   }
 
@@ -39,10 +45,8 @@ export class NoteFormComponent extends PresentationalComponent implements OnChan
   }
 
   saveNote(): void {
-    let note: Map<string, any> = fromJS(this.noteForm.value);
-
     if (this.noteForm.valid && this.noteForm.dirty) {
-      this.triggerSave.next(note);
+      this.triggerSave.next(this.currentNote);
     }
   }
 }

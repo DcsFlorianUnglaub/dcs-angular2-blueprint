@@ -22,22 +22,17 @@ exports.config = {
   },
   directConnect: true,
 
-  // capabilities: {
-  //   'browserName': 'chrome',
-  //   'chromeOptions': {
-  //   }
-  // },
-
-  multiCapabilities: [{
-    'browserName': 'chrome'
-  }, {
-    'browserName': 'firefox'
-  }],
-
-  onPrepare: function () {
-    browser.ignoreSynchronization = true;
+  capabilities: {
+    'browserName': 'chrome',
+    'chromeOptions': {
+    }
   },
 
-  // useAllAngular2AppRoots: true
+  onPrepare: function () {
+    // http://stackoverflow.com/questions/27219335/protractor-angularjs-parse-protractor-does-not-wait-for-angular-to-resolve
+    browser.ignoreSynchronization = false;
+  },
+
+  useAllAngular2AppRoots: true,
   rootElement: 'dcs-app'
 };

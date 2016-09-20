@@ -26,6 +26,12 @@ export const NOTES_DELETE_START: string = 'NOTES_DELETE_START';
 export const NOTES_DELETE_NEXT: string = 'NOTES_DELETE_NEXT';
 export const NOTES_DELETE_ERROR: string = 'NOTES_DELETE_ERROR';
 
+export const NOTE_UPDATE: string = 'NOTE_UPDATE';
+export const NOTE_UPDATE_START: string = 'NOTE_UPDATE_START';
+export const NOTE_UPDATE_NEXT: string = 'NOTE_UPDATE_NEXT';
+export const NOTE_UPDATE_ERROR: string = 'NOTE_UPDATE_ERROR';
+
+
 @Injectable()
 export class NotesActions {
   constructor(private restClient: RestClient) { }
@@ -57,5 +63,14 @@ export class NotesActions {
       type: NOTES_DELETE,
       payload: this.restClient.delete(`notes/${noteId}`).map(() => noteId)
     };
+  }
+
+  update(noteId: number, data: Map<string, any>): IAction {
+    let payload: Observable<{}> = this.restClient.put(`notes/${noteId}`, data);
+
+    return {
+      type: NOTE_UPDATE,
+      payload: payload
+    }
   }
 }

@@ -11,11 +11,13 @@
     ></dcs-notes-list>
   </div>
 
-  <div class="col-sm-6">
-    <a routerLink="/notes/new">Add a new note</a>
-  </div>
-  <div class="col-sm-6">
-    <a (click)="clearAllNotes()">Clear all notes</a>
+  <div *ngIf="!(loading$ | async)">
+    <div class="col-sm-6">
+      <a routerLink="/notes/new">Add a new note</a>
+    </div>
+    <div class="col-sm-6">
+      <a (click)="clearAllNotes()">Clear all notes</a>
+    </div>
   </div>
 
   <div *ngIf="error$ | async" class="col-sm-12">

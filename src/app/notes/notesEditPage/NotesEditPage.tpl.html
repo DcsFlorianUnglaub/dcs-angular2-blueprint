@@ -3,4 +3,6 @@
 <dcs-note-form
   [note]="note$ | async"
   [loading]="loading$ | async"
+  (updateFormData)="updateFormData($event)"
+  (triggerSave)="save($event)"
 ></dcs-note-form>

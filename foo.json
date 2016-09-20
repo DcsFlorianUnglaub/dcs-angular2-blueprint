@@ -1,0 +1,31 @@
+{
+  "data": [
+    {
+      "id": 5,
+      "type": "single", // etc
+      "links": {
+        "self": "http://example.com/question/D_12"
+      },
+      "attributes": {
+        "label": "foo",
+        "title": "FOo Question",
+        "description": "Foo description",
+        "text": "Langer text...",
+        "answers": [
+          {
+            "id": 1,
+            "label": "Antwort1",
+            "text": "Antwort Option 1"
+          }
+        ]
+      }
+    }
+  ],
+  "meta": {
+    "topic": {
+      "label": "Bahn"
+    },
+    "progress": 80
+  },
+  "errors": []
+}
